@@ -1,0 +1,151 @@
+body {
+    font-family: catamaran;
+}
+
+main {
+    background: #F5F5F5;
+}
+
+.flexbox {
+    display: flex;
+}
+
+@media only screen and (min-width: 429px){
+    #wrapper {
+        width: 1366px;
+        margin: 0 auto;
+    } 
+
+    #header {
+        display: block;
+        width: 1366px;
+        height: 106px;
+        background: #333333;
+    }
+
+    #logo {
+        display: block;
+        background-image: url(../images/medigment__logo.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: relative;
+        width: 233px;
+        height: 84.14px;
+        left: 7px;
+        top: 11px;
+    }
+
+    #drawer {
+        display: none;
+    }
+
+    main {
+        display: block;
+        padding: 20px;
+        height: 888px;
+        width: 1111px;
+        background: #F5F5F5;
+    }
+
+    h1 {
+        font-size: 36px;
+        font-weight: bold;
+    }
+
+    aside {
+        width: 255px;
+        height: 888px;
+        background: #777777;
+    }
+
+    .nav {
+        display: inline;
+    }
+
+    .nav-link {
+        font-weight: bold;
+        color: #333333;
+        font-size: 30px;
+    }
+
+    .active {
+        color: #ffffff;
+    }
+
+    footer {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 428px){
+    #wrapper {
+        width: 428px;
+        margin: 0 auto;
+    }
+
+    #header {
+        display: block;
+        width: 428px;
+        height: 106px;
+        background: #333333;
+    }
+
+    #logo {
+        display: block;
+        background-image: url(../images/medigment__logo.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: relative;
+        width: 233px;
+        height: 84.14px;
+        left: 98px;
+        top: 11px;
+    }
+
+    main {
+        display: block;
+        height: 733px;
+        width: 428px;
+        background: #F5F5F5;
+    }
+
+    .breadcrumb {
+        display: none;
+    }
+
+    h1 {
+        text-align: center;
+        top:0;
+        font-size: 20px;
+        font-weight: bold;
+        background: #D9D9D9;
+    }
+
+    aside {
+        display: none;
+    }
+
+    footer {
+        display: block;
+        width: 428px;
+        height: 87px;
+        background: #333333;
+    }
+
+    .nav {
+    }
+
+    .nav-link {
+        font-weight: bold;
+        color: #777777;
+        font-size: 16px;
+    }
+
+    .active {
+        color: #ffffff;
+    }
+
+    .nav-underline {
+        justify-content: space-evenly;
+    }
+}
