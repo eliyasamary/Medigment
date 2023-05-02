@@ -1,81 +1,213 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+header, main, footer, nav, aside, section, div  {
+    display: block;
+}
 body {
     font-family: catamaran;
+    position: relative;
 }
-
 main {
-    background: #F5F5F5;
-}
-
-.flexbox {
+    position: relative;
     display: flex;
+    height: 918px;
+    width: 1366px;
+    background: #CCCCCC;
+}
+header {
+    width: 1366px;
+    height: 106px;
+    background: #333333;
+}
+#logo {
+    display: block;
+    background-image: url(../images/medigment__logo.png);
+    position: relative;
+    width: 233px;
+    height: 84.14px;
+    left: 7px;
+    top: 11px;
+}
+.content-area{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+/* main navigation */
+#main-nav{
+    width: 255px;
+    height: 918px;
+    background-color: #777777;
+}
+.flex-column{
+    position: absolute;
+    padding-top: 35px;
+    padding-left: 22px;
+}
+a.nav-link{
+    font-size: 26px;
+    line-height: 50px;
+}
+/* breadcrumb + h1 */
+a{
+    text-decoration: none;
+    color: #333333;
+}
+#BC-H1{
+    margin-top: 15px;
+    margin-left: 26px;
+}
+#BC-H1 > h1{
+    font-weight: bold;
+    font-size: 36px;
 }
 
-@media only screen and (min-width: 429px){
-    #wrapper {
-        width: 1366px;
-        margin: 0 auto;
-    } 
 
-    #header {
-        display: block;
-        width: 1366px;
-        height: 106px;
-        background: #333333;
-    }
+/* content */
+.modify{
+    /* background-color: darkblue; */
+    height: 70px;
+    width: 826px;
+    display: flex;
+    flex-direction: row;
+    margin-left: 26px;
 
-    #logo {
-        display: block;
-        background-image: url(../images/medigment__logo.png);
-        background-repeat: no-repeat;
-        background-size: contain;
-        position: relative;
-        width: 233px;
-        height: 84.14px;
-        left: 7px;
-        top: 11px;
-    }
-
-    #drawer {
-        display: none;
-    }
-
-    main {
-        display: block;
-        padding: 20px;
-        height: 888px;
-        width: 1111px;
-        background: #F5F5F5;
-    }
-
-    h1 {
-        font-size: 36px;
-        font-weight: bold;
-    }
-
-    aside {
-        width: 255px;
-        height: 888px;
-        background: #777777;
-    }
-
-    .nav {
-        display: inline;
-    }
-
-    .nav-link {
-        font-weight: bold;
-        color: #333333;
-        font-size: 30px;
-    }
-
-    .active {
-        color: #ffffff;
-    }
-
-    footer {
-        display: none;
-    }
 }
+div.search-bar{
+    width: 419px;
+    height: 40px;
+    margin-top: 25px;
+}
+div.btn-group{
+    height: 39px;
+    /* width: 110px; */
+}
+button.btn-secondary{
+    background-color: #555555;
+}
+button.dropdown-toggle{
+    background-color: #222222;
+    width: 26px;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+}
+.modify-button{
+    display: flex;
+    flex-direction: column;
+    margin-left: 25px;
+}
+#view-btn{
+    display: block;
+    background-image: url(../images/view-btn.png);
+    position: relative;
+    width: 25px;
+    height: 25px;
+}
+.nav-link {
+    font-weight: bold;
+    color: #333333;
+    font-size: 30px;
+}
+.active {
+    color: #ffffff;
+}
+.list{
+    background-color:#EEEEEE;
+    border-radius: 10px;
+    height: 732px;
+    width: 1055px;
+    margin-left: 26px;
+}
+div.container-fluid{
+    --bs-gutter-x: 0;
+}
+.paitent-card{
+    height: 114px;
+    width: 986px;
+    background-color: #FFFFFF;
+    margin-top: 21px;
+    margin-left: 30px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.paitent-card > span{
+    font-size: 28px;
+    font-weight: bold;
+    width: 180px;
+    margin-left: 30px;
+}
+.cards{
+    height: 732px;
+    width: 1055px;
+    position: relative;
+    overflow-y: scroll;
+}
+#crad-info{
+    display: block;
+    background-image: url(../images/info.png);
+    position: relative;
+    width: 53px;
+    height: 70px;
+    right: 40px
+}
+#crad-add{
+    display: block;
+    background-image: url(../images/add-med.png);
+    position: relative;
+    width: 103px;
+    height: 70px;
+    right: 5px;
+}
+#crad-edit{
+    display: block;
+    background-image: url(../images/edit.png);
+    position: relative;
+    width: 46px;
+    height: 70px;
+    left: 20px;
+}
+#crad-delete{
+    display: block;
+    background-image: url(../images/delete.png);
+    position: relative;
+    width: 58px;
+    height: 70px;
+    left: 60px;
+}
+div.add-paitent{
+    display: block;
+    background-image: url(../images/add-patient.png);
+    position: relative;
+    width: 105px;
+    height: 61px;
+    position: absolute;
+    left: 967px;
+    top: 25px;
+}
+
+/* scroll */
+::-webkit-scrollbar {
+    /* width: 15px; */
+}
+::-webkit-scrollbar-thumb {
+    background-color: #555555;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #cccccc;
+}
+::-webkit-scrollbar-track-piece{
+    background: #cccccc;
+}
+
+
+
 
 @media only screen and (max-width: 428px){
     #wrapper {
