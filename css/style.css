@@ -58,16 +58,16 @@ main{
     top: 32px;
     right: 7px;
 }
-#list-page > header{
+header{
     width: 100%;
     height: 106px;
     background: #333333;
 }
-#list-page > header > #header-container{
+#header-container{
     display: flex;
     justify-content: center;
 }
-#list-page > header > #header-container > #logo {
+#logo {
     display: block;
     background-image: url(../images/medigment__logo.png);
     position: relative;
@@ -84,6 +84,7 @@ main{
 #sm-h1 > span{
     font-size: 25px;
     text-align: center;
+    font-weight: 500;
 }
 #top-nav{
     position: absolute;
@@ -93,11 +94,8 @@ main{
 .top-nav-link{
     font-size: 24px;
 }
-#list-page > main {
+main {
     margin-top: 16px;
-}
-.list-group-item{
-    border: transparent;
 }
 #modify-btns{
     display: flex;
@@ -136,14 +134,10 @@ main{
     display: flex;
     justify-content: space-between;
 }
-.dropdown-item{
-    font-size: 20px;
-}
 #BC-H1{
     margin-top: 15px;
     position: relative;
     margin-left: 40px;
-    width: 300px;
 }
 #BC-style{
     text-decoration: none;
@@ -160,24 +154,124 @@ main{
     margin-bottom: 10px;
     align-items: flex-end;
     margin-left: 30px;
-    width: 800px;
+    width: 740px;
 }
 div.search-bar{
     width: 419px;
 }
+#add-patient-btn{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    margin-left: 661px;
+    margin-bottom: 50px;
+}
+#add-patient-btn > span{
+    margin-top: -10px;
+}
+.paitent-options{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    height: 50px;
+}
+.icon-with-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-/* asafs changes */
+    height: 40px;
+}
+.sm-icon{
+    width: 36px;
+}
+.list-group-item{
+    align-items: center;
+}
+.patient-name{
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+.patient-name:hover{
+    background-color: transparent;
+}
+.patient-info-container{
+    background-color: #eeeeee;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 500;
+    width: 95%;
+    margin-right: 20px;
+    margin-left: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+.title{
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+.data{
+    background-color: #ffffff;
+    border-radius: 10px;
+    font-weight: 400;
+    height: 29px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+.card{
+    background-color: transparent;
+    border: 0px;
+    width: 47%;
+}
+.row{
+    display: flex;
+    align-items: center;
+    line-height: 40px;
+}
+.col-6{
+    margin-bottom: 10px;
+}
+.col-12{
+    margin-bottom: 10px;
+}
+hr{
+    margin: 5px;
+}
+.card-body{
+    margin-top: 15px;
+}
+.options-h1-container{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.patient-info-options{
+    justify-content: flex-end;
+    gap: 34px;
+    width: 300px;
+    padding-right: 3%;
+}
+
+
+/* form */
 form {
     font-weight: bold;
 }
 
-/* asafs changes */
 .btn-form {
     width: 100px;
     background-color: #EEEEEE;
     margin-left: 20px;
     font-weight: bold;
 }
+
+
+
 
 @media only screen and (min-width: 1075px ) {
     #top-nav{
@@ -186,13 +280,21 @@ form {
     #sm-h1{
         display: none;
     }
-    #list-page > main{
+    main{
         margin-top: 0px;
     }
-    #list-page > header > #header-container{
+    #header-container{
         justify-content: space-between;
     }
-
+    #patients-list{
+        max-width: 852px;
+    }
+    .patient-bed{
+        display: none;
+    }
+    .list-group-item{
+        height: 80px;
+    }
     /* asafs changes */
     #form-back {
         margin: 20px;
@@ -202,6 +304,7 @@ form {
         background-color: #EEEEEE; 
         border-radius: 10px;
     }
+
 }
 
 @media only screen and (max-width: 1075px ) {
@@ -213,8 +316,18 @@ form {
     }
     #content{
         margin-left: 0px;
+        margin-top: 0px;
     }
-    #BC-H1{
+    /* #BC-H1{
+        display: none;
+    } */
+    .breadcrumb{
+        display: none;
+    }
+    .options-h1-container > h1{
+        display: none;
+    }
+    #BC-H1 > h1{
         display: none;
     }
     .search-bar{
@@ -222,14 +335,49 @@ form {
     }
     .modify{
         display: flex;
-        justify-content: center;
         gap: 10px;
         margin-left: 0px;
         width: 100%;
+        align-items: center;
+        flex-direction: column-reverse;
     }
-
-     /* asafs changes */
+    #add-patient-btn{
+        position: relative;
+        margin-left: 0px;
+        margin-bottom: 0px;
+    }
+    .patient-info-container{
+        margin: 0px;
+        flex-direction: column;
+    }
+    .centerd{
+        align-items: center;
+    }
+    .card{
+        width: 100%;
+    }
+    #patients-list{
+        align-items: center;
+        margin-left: 0px;
+    }
+    .paitent-options{
+        height: 30px;
+    }
+    .patient-name{
+        margin-top: 0px;
+    }
+    .patient-info-options {
+        justify-content: center;
+        gap: 34px;
+        width: 300px;
+        padding-right: 18%;
+    }
+    .icon-with-text > span{
+        display: none;
+    }
+    /* asafs changes */
     #form-back {
         padding: 15px;
     }
+
 }
