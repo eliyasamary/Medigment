@@ -171,6 +171,13 @@ form {
     font-weight: bold;
 }
 
+.btn-form {
+    width: 100px;
+    background-color: #EEEEEE;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
 @media only screen and (min-width: 1075px ) {
     #top-nav{
         display: none;
