@@ -20,4 +20,9 @@ window.onload = () => {
         $("#next-step-button").show();
         $("#submit-button").hide();
     };
+
+    document.getElementById("addSensitivity").onclick = function() {
+      const sensitiveBox = document.createElement("div");
+      sensitiveBox.innerText = "";  
+    };
 };

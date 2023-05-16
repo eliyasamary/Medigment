@@ -89,21 +89,21 @@
               </div>
             </div>
           </div>
-          <form>
+          <form action="index.php" method="GET">
           <div id="form-back">
               <section id="part1" class="row g-3">
                 <span class="title">Patient's Personal Details</span><hr>
                 <div class="col-md-4">
                   <label for="inputFirstName4" class="form-label">First Name:</label>
-                  <input type="text" class="form-control" id="inputFirstName4">
+                  <input type="text" class="form-control" name="firstName" id="inputFirstName4">
                 </div>
                 <div class="col-md-4">
                   <label for="inputLastName4" class="form-label">Last Name:</label>
-                  <input type="text" class="form-control" id="inputLastName4">
+                  <input type="text" class="form-control" name="lastName" id="inputLastName4">
                 </div>
                 <div class="col-md-4">
                   <label for="inputID4" class="form-label">ID Number:</label>
-                  <input type="tel" class="form-control" id="inputID4">
+                  <input type="tel" class="form-control" name="idNum" id="inputID4">
                 </div>
                 <div class="col-md-4">
                   <label for="inputGender" class="form-label">Gender:</label>
@@ -182,7 +182,7 @@
                   <div class="col-md-4">
                     <input type="text" class="form-control" placeholder="Add Comment" id="inputSensitivity">
                   </div>
-                  <div class="col-md-6"><img src="images/addForm.png"></div>
+                  <div id="addSensitivity" class="col-md-6"><img src="images/addForm.png"></div>
                   <span class="title second-section">Medications</span><hr> 
                   <div class="col-md-6"><img src="images/addForm.png"></div>
               </section>
@@ -191,7 +191,7 @@
               <button type="button" id="back-button" class="btn btn-form1" disabled>Back</button>
               <a href="./index.html"><button type="button" class="btn btn-form1">Cancel</button></a>
               <button type="button" id="next-step-button" class="btn btn-form2">Next Step</button>
-              <button type="submit" id="submit-button" class="btn btn-form2">Finish</button>
+              <button type="submit" value="Submit" id="submit-button" class="btn btn-form2">Finish</button>
             </section>
           </form>
         </div>
