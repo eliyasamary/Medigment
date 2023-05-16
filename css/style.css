@@ -166,6 +166,10 @@ div.search-bar{
     width: 419px;
 }
 
+/* asafs changes */
+form {
+    font-weight: bold;
+}
 
 @media only screen and (min-width: 1075px ) {
     #top-nav{
@@ -179,6 +183,16 @@ div.search-bar{
     }
     #list-page > header > #header-container{
         justify-content: space-between;
+    }
+
+    /* asafs changes */
+    #form-back {
+        margin: 20px;
+        padding: 15px;
+        width:initial;
+        height: 600px;
+        background-color: #EEEEEE; 
+        border-radius: 10px;
     }
 }
 
@@ -204,5 +218,10 @@ div.search-bar{
         gap: 10px;
         margin-left: 0px;
         width: 100%;
+    }
+
+     /* asafs changes */
+    #form-back {
+        padding: 15px;
     }
 }
