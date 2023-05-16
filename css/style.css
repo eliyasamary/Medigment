@@ -1,0 +1,204 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+header, main, footer, nav, aside, section, div  {
+    display: block;
+}
+body{
+    font-family: 'Catamaran', sans-serif;
+    background-color: #cccccc;
+}
+main{
+    display: flex;
+    position: relative;
+}
+#content{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 280px;
+}
+#main-nav{
+    width: 280px;
+    height: 100%;
+    background-color: #777777;
+    position: fixed;
+}
+.flex-column {
+    padding-top: 35px;
+    padding-left: 20px;
+}
+.nav-link {
+    font-weight: 500;
+    color: #333333;
+    font-size: 24px;
+    line-height: 50px;
+}
+.active {
+    color: #ffffff;
+}
+#user{
+    position: relative;
+}
+.user-photo{
+    border-radius: 100%;
+    height: 78px;
+    width: 78px;
+    margin-right: 14px;
+    margin-top: 14px;
+}
+#user-name{
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 65px;
+    position: relative;
+    top: 32px;
+    right: 7px;
+}
+#list-page > header{
+    width: 100%;
+    height: 106px;
+    background: #333333;
+}
+#list-page > header > #header-container{
+    display: flex;
+    justify-content: center;
+}
+#list-page > header > #header-container > #logo {
+    display: block;
+    background-image: url(../images/medigment__logo.png);
+    position: relative;
+    width: 233px;
+    height: 84.14px;
+}
+#sm-h1{
+    background-color: #777777;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#sm-h1 > span{
+    font-size: 25px;
+    text-align: center;
+}
+#top-nav{
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.top-nav-link{
+    font-size: 24px;
+}
+#list-page > main {
+    margin-top: 16px;
+}
+.list-group-item{
+    border: transparent;
+}
+#modify-btns{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.list-titel{
+    margin-top: 20px;
+    display: flex;
+    width: 100%;
+    height: 35px;
+    background-color: #333333;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    border-radius: 7px 7px 0px 0px;
+    font-size: 18px;
+
+}
+.btn-secondary{
+    width: 100px;
+    background-color: #333333;
+}
+.patients-list-group{
+    margin-bottom: 10px;
+    width: 90%;
+}
+#patients-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.patient-details{
+    display: flex;
+    justify-content: space-between;
+}
+.dropdown-item{
+    font-size: 20px;
+}
+#BC-H1{
+    margin-top: 15px;
+    position: relative;
+    margin-left: 40px;
+}
+#BC-style{
+    text-decoration: none;
+    color: #333333;
+}
+#BC-H1 > h1{
+    font-weight: bold;
+    font-size: 36px;
+}
+.modify{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    align-items: flex-end;
+    margin-left: 30px;
+}
+div.search-bar{
+    width: 419px;
+}
+
+
+@media only screen and (min-width: 1075px ) {
+    #top-nav{
+        display: none;
+    }
+    #sm-h1{
+        display: none;
+    }
+    #list-page > main{
+        margin-top: 0px;
+    }
+    #list-page > header > #header-container{
+        justify-content: space-between;
+    }
+}
+
+@media only screen and (max-width: 1075px ) {
+    #main-nav{
+        display: none;
+    }
+    #user{
+        display: none;
+    }
+    #content{
+        margin-left: 0px;
+    }
+    #BC-H1{
+        display: none;
+    }
+    .search-bar{
+        display: none;
+    }
+    .modify{
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-left: 0px;
+    }
+}

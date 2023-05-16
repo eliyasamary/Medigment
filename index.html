@@ -1,151 +1,188 @@
 <!DOCTYPE html>
 <html>
-  <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-      <link rel="stylesheet" href="./css/css_pack.css">
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Catamaran&display=swap" rel="stylesheet">
-      <title>Medigment - Home Page</title>
-  </head>
-  <body>
-      <header>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="js/script.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+        <title>Patients</title>
+    </head>
+    <body id="list-page">
+      <header class="sticky-top">
+        <nav id="top-nav" class="navbar navbar-dark">
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end text-bg-dark bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav flex-column me-auto">
+                <li class="nav-item">
+                  <a class="nav-link top-nav-link" href="#">Home Page</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link top-nav-link" href="#">Search Medicine</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link top-nav-link active" href="#">Patients</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link top-nav-link" href="#">Status</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link top-nav-link" href="#">Settings</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <div id="header-container">
           <a href="#" id="logo"></a>
-          <div>
-            <span>Hagit</span>
+          <div id="user">
+            <span id="user-name">Hagit</span>
             <img class="user-photo" src="images/hagit.png" alt="user">
           </div>
+        </div>
+        <div id="sm-h1"><span>Patients</span></div>
       </header>
       <main>
-        <!-- main navigation  -->
-        <nav id="main-nav"></nav>
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Home Page</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Search Medicine</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Patients</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Status</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Settings</a>
-          </li>
-        </ul>
-        <!-- content area -->
-        <div class="content-area">
-          <!-- breadcrumb + h1 -->
-          <div id="BC-H1"> 
-            <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item" class="breadcrumb-add"><a href="#">Patients</a></li>
-                <!-- <li class="breadcrumb-item active" aria-current="page">Library</li> -->
-              </ol>
-            </nav>
-            <h1>Patients</h1>
-          </div>
-            <!-- modify area -->
-            <div class="modify">
-              <!-- search -->
-              <div class="search-bar">
-                <div class="container-fluid">
-                  <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  </form>
-                </div>
-              </div>
-              <!-- buttons -->
-              <div class="buttons">
-                <div class="modify-button">
-                  <span>Sort</span>
-                  <div class="btn-group">
-                    <button class="btn btn-secondary btn-sm" type="button">A-Z</button>
-                    <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                      <span class="visually-hidden">Toggle Dropdown</span>
-                    </button>
-                    <ul class="dropdown-menu">
-                      ...
-                    </ul>
+        <nav id="main-nav">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="homePage.html">Home Page</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Search Medicine</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Patients</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Status</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Settings</a>
+            </li>
+          </ul>
+        </nav>
+        <div id="content">
+            <div id="BC-H1"> 
+              <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item" class="breadcrumb-add"><a href="#" id="BC-style">Patients</a></li>
+                </ol>
+              </nav>
+              <h1>Patients</h1>
+            </div>
+              <div class="modify">
+                <div class="search-bar">
+                  <div class="container-fluid">
+                    <form class="d-flex">
+                      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    </form>
                   </div>
                 </div>
-                <div class="modify-button">
-                  <span>Filter</span>
-                  <div class="btn-group">
-                    <button class="btn btn-secondary btn-sm" type="button">All</button>
-                    <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                      <span class="visually-hidden">Toggle Dropdown</span>
+                <div id="modify-btns">
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Sort
                     </button>
-                    <ul class="dropdown-menu">
-                      ...
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                      <li><a class="dropdown-item" href="#">A-Z</a></li>
+                      <li><a class="dropdown-item" href="#">Z-A</a></li>
+                      <li><a class="dropdown-item" href="#">Last Added</a></li>
+                      <li><a class="dropdown-item active" href="#">Room</a></li>
+                      <li><a class="dropdown-item" href="#">Bed</a></li>
                     </ul>
                   </div>
-                </div>
-                <div class="modify-button">
-                  <span>View</span>
-                  <div class="btn-group">
-                    <button class="btn btn-secondary btn-sm" type="button">
-                      <section id="view-btn"></section>
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      View
                     </button>
-                    <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                      <span class="visually-hidden">Toggle Dropdown</span>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                      <li><a class="dropdown-item" href="#">Grid</a></li>
+                      <li><a class="dropdown-item active" href="#">List</a></li>
+                    </ul>
+                  </div>
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Filter
                     </button>
-                    <ul class="dropdown-menu">
-                      ...
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                      <li><a class="dropdown-item active" href="#">None</a></li>
+                      <li><a class="dropdown-item" href="#">Men</a></li>
+                      <li><a class="dropdown-item" href="#">Female</a></li>
                     </ul>
                   </div>
                 </div>
               </div>
+          <section id="patients-list">
+            <div class="patients-list-group">
+              <span class="list-titel">Room 1</span>
+              <ul class="list-group">
+                <li class="list-group-item"><a class="dropdown-item" href="#">
+                  <div class="patient-details"><span>Roy Ovadia</span><span>Bed 1</span></div></a></li>
+                <li class="list-group-item"><a class="dropdown-item" href="#">
+                  <div class="patient-details"><span>Sahar Shabtay</span><span>Bed 2</span></div></a></li>
+                <li class="list-group-item"><a class="dropdown-item" href="#">
+                  <div class="patient-details"><span>Lior Zafrir</span><span>Bed 3</span></div></a></li>
+              </ul>
             </div>
-            <!-- objects list -->
-            <div class="list">
-              <div class="cards">
-                <div class="paitent-card">
-                  <span>Guy Levy</span><span>Room 7</span><span>Bed 1</span>
-                  <div id="crad-info"></div><div id="crad-add"></div><div id="crad-edit"></div><div id="crad-delete"></div>
-                </div>
-                <div class="paitent-card">
-                  <span>Guy Levy</span><span>Room 7</span><span>Bed 1</span>
-                  <div id="crad-info"></div><div id="crad-add"></div><div id="crad-edit"></div><div id="crad-delete"></div>
-                </div>
-                <div class="paitent-card">
-                  <span>Guy Levy</span><span>Room 7</span><span>Bed 1</span>
-                  <div id="crad-info"></div><div id="crad-add"></div><div id="crad-edit"></div><div id="crad-delete"></div>
-                </div>
-                <div class="paitent-card">
-                  <span>Guy Levy</span><span>Room 7</span><span>Bed 1</span>
-                  <div id="crad-info"></div><div id="crad-add"></div><div id="crad-edit"></div><div id="crad-delete"></div>
-                </div>
-                <div class="paitent-card">
-                  <span>Guy Levy</span><span>Room 7</span><span>Bed 1</span>
-                  <div id="crad-info"></div><div id="crad-add"></div><div id="crad-edit"></div><div id="crad-delete"></div>
-                </div>
-                <div class="paitent-card">
-                  <span>Guy Levy</span><span>Room 7</span><span>Bed 1</span>
-                  <div id="crad-info"></div><div id="crad-add"></div><div id="crad-edit"></div><div id="crad-delete"></div>
-                </div>
-                <div class="paitent-card">
-                  <span>Guy Levy</span><span>Room 7</span><span>Bed 1</span>
-                  <div id="crad-info"></div><div id="crad-add"></div><div id="crad-edit"></div><div id="crad-delete"></div>
-                </div>
-                <div class="paitent-card">
-                  <span>Guy Levy</span><span>Room 7</span><span>Bed 1</span>
-                  <div id="crad-info"></div><div id="crad-add"></div><div id="crad-edit"></div><div id="crad-delete"></div>
-                </div>
-              </div>
+            <div class="patients-list-group">
+              <span class="list-titel">Room 2</span>
+              <ul class="list-group">
+                <li class="list-group-item"><a class="dropdown-item" href="#">
+                  <div class="patient-details"><span>Guy Levy</span><span>Bed 1</span></div></a></li>
+                <li class="list-group-item"><a class="dropdown-item" href="#">
+                  <div class="patient-details"><span>Shaked Aharon</span><span>Bed 2</span></div></a></li>
+                <li class="list-group-item"><a class="dropdown-item" href="#">
+                  <div class="patient-details"><span>Menahem Ohayon</span><span>Bed 3</span></div></a></li>
+              </ul>
             </div>
-            <!-- <div class="add-paitent"><a href="addPaitent.html"></a></div> -->
-            <div class="add-patient">
-              <a href="addPaitent.html"><img src="images/add-patient.png" alt="add paitent"></a>
+            <div class="patients-list-group">
+              <span class="list-titel">Room 3</span>
+              <ul class="list-group">
+                <li class="list-group-item"><a class="dropdown-item" href="#">
+                  <div class="patient-details"><span>Ohad Rvinal</span><span>Bed 1</span></div></a></li>
+                <li class="list-group-item"><a class="dropdown-item" href="#">
+                  <div class="patient-details"><span>Neta Levy</span><span>Bed 2</span></div></a></li>
+                <li class="list-group-item"><a class="dropdown-item" href="#">
+                  <div class="patient-details"><span>Tal Biton</span><span>Bed 3</span></div></a></li>
+              </ul>
             </div>
+            <div class="patients-list-group">
+              <span class="list-titel">Room 4</span>
+              <ul class="list-group">
+                <li class="list-group-item"><a class="dropdown-item" href="#">
+                  <div class="patient-details"><span>Noa Elmakay</span><span>Bed 1</span></div></a></li>
+                <li class="list-group-item"><a class="dropdown-item" href="#">
+                  <div class="patient-details"><span>Rvital Zimberg</span><span>Bed 2</span></div></a></li>
+                <li class="list-group-item"><a class="dropdown-item" href="#">
+                  <div class="patient-details"><span>Osher Ohayon</span><span>Bed 3</span></div></a></li>
+              </ul>
+            </div>
+            <div class="patients-list-group">
+              <span class="list-titel">Room 4</span>
+              <ul class="list-group">
+                <li class="list-group-item"><a class="dropdown-item" href="#">
+                  <div class="patient-details"><span>Noa Elmakay</span><span>Bed 1</span></div></a></li>
+                <li class="list-group-item"><a class="dropdown-item" href="#">
+                  <div class="patient-details"><span>Rvital Zimberg</span><span>Bed 2</span></div></a></li>
+                <li class="list-group-item"><a class="dropdown-item" href="#">
+                  <div class="patient-details"><span>Osher Ohayon</span><span>Bed 3</span></div></a></li>
+              </ul>
+            </div>
+          </section>
         </div>
       </main>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-  </body>
+    </body>
 </html>
