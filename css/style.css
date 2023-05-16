@@ -143,7 +143,7 @@ main {
     text-decoration: none;
     color: #333333;
 }
-#BC-H1 > h1{
+.title-h1{
     font-weight: bold;
     font-size: 36px;
 }
@@ -153,7 +153,7 @@ main {
     flex-direction: row;
     margin-bottom: 10px;
     align-items: flex-end;
-    margin-left: 30px;
+    margin-left: 10px;
     width: 740px;
 }
 div.search-bar{
@@ -216,9 +216,9 @@ div.search-bar{
 }
 .data{
     background-color: #ffffff;
-    border-radius: 10px;
+    border-radius: 5px;
     font-weight: 400;
-    height: 29px;
+    height: 35px;
     display: flex;
     align-items: center;
     padding-left: 10px;
@@ -260,14 +260,48 @@ hr{
 
 /* form */
 form {
-    font-weight: bold;
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: 500;
 }
-
-.btn-form {
+.form-control{
+    border-color: #fff;
+}
+.form-select{
+    border-color: #ffffff;
+}
+.btn-form1 {
     width: 100px;
     background-color: #EEEEEE;
-    margin-left: 20px;
     font-weight: bold;
+}
+.btn-form1:hover{
+    background-color: #eeeeee61;
+    color: #ffffff;
+}
+.btn-form2 {
+    width: 100px;
+    background-color: #333333;
+    font-weight: bold;
+    color: #ffffff;
+}
+.btn-form2:hover{
+    background-color: #777777;
+}
+.progress{
+    height: 20px;
+}
+#form-btns{
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    margin-left: 20px;
+}
+.second-section{
+    margin-top: 40px;
+}
+.flex-container{
+    display: flex;
 }
 
 
@@ -295,7 +329,6 @@ form {
     .list-group-item{
         height: 80px;
     }
-    /* asafs changes */
     #form-back {
         margin: 20px;
         padding: 15px;
@@ -318,9 +351,6 @@ form {
         margin-left: 0px;
         margin-top: 0px;
     }
-    /* #BC-H1{
-        display: none;
-    } */
     .breadcrumb{
         display: none;
     }
@@ -349,6 +379,7 @@ form {
     .patient-info-container{
         margin: 0px;
         flex-direction: column;
+        margin-bottom: 20px;
     }
     .centerd{
         align-items: center;
@@ -375,9 +406,19 @@ form {
     .icon-with-text > span{
         display: none;
     }
-    /* asafs changes */
     #form-back {
         padding: 15px;
     }
-
+    #form-btns{
+        justify-content: center;
+        margin-left: 0px;
+        margin-top: 20px;
+    }
+    form{
+        margin-left: 0px;
+    }
+    .flex-container{
+        display: block;
+        width: 90%;
+    }
 }
