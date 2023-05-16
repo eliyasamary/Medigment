@@ -142,6 +142,7 @@ main{
     margin-top: 15px;
     position: relative;
     margin-left: 40px;
+    width: 300px;
 }
 #BC-style{
     text-decoration: none;
@@ -158,6 +159,7 @@ main{
     margin-bottom: 10px;
     align-items: flex-end;
     margin-left: 30px;
+    width: 800px;
 }
 div.search-bar{
     width: 419px;
@@ -200,5 +202,6 @@ div.search-bar{
         justify-content: center;
         gap: 10px;
         margin-left: 0px;
+        width: 100%;
     }
 }
