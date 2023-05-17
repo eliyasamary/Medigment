@@ -20,7 +20,7 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="offcanvas offcanvas-end text-bg-dark bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+          <div class="offcanvas offcanvas-end text-bg-dark bg-dark" tabindex="-1" id="offcanvasDarkNavbar">
             <div class="offcanvas-header">
               <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
@@ -79,8 +79,8 @@
             <div id="BC-H1"> 
               <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item" class="breadcrumb-add"><a href="./index.html" id="BC-style">Patients</a></li>
-                  <li class="breadcrumb-item" class="breadcrumb-add"><a href="#" id="BC-style">Add patient</a></li>
+                  <li class="breadcrumb-item breadcrumb-add"><a href="./index.html">Patients</a></li>
+                  <li class="breadcrumb-item breadcrumb-add"><a href="#">Add patient</a></li>
                 </ol>
               </nav>
               <h1 class="title-h1">Add Patient</h1>
@@ -89,33 +89,33 @@
               </div>
             </div>
           </div>
-          <form action="http://se.shenkar.ac.il/students/2022-2023/web1/dev_204/index.php" method="get">
+          <form>
           <div id="form-back">
               <section id="part1" class="row g-3">
                 <span class="title">Patient's Personal Details</span><hr>
                 <div class="col-md-4">
                   <label for="inputFirstName4" class="form-label">First Name:</label>
-                  <input type="text" class="form-control" name="firstName" id="inputFirstName4">
+                  <input type="text" class="form-control" id="inputFirstName4">
                 </div>
                 <div class="col-md-4">
                   <label for="inputLastName4" class="form-label">Last Name:</label>
-                  <input type="text" class="form-control" name="lastName" id="inputLastName4">
+                  <input type="text" class="form-control" id="inputLastName4">
                 </div>
                 <div class="col-md-4">
                   <label for="inputID4" class="form-label">ID Number:</label>
-                  <input type="tel" class="form-control" name="idNum" id="inputID4">
+                  <input type="tel" class="form-control" id="inputID4">
                 </div>
                 <div class="col-md-4">
-                  <label for="inputGender" class="form-label">Gender:</label>
-                  <select class="form-select" name="gender">
+                  <label class="form-label">Gender:</label>
+                  <select class="form-select">
                     <option selected>select</option>
                     <option value="1">Male</option>
                     <option value="2">Female</option>
                   </select>
                 </div>
                 <div class="col-md-4">
-                  <label for="inputHMO" class="form-label">HMO:</label>
-                  <select class="form-select" name="HMO">
+                  <label class="form-label">HMO:</label>
+                  <select class="form-select">
                     <option selected>select</option>
                     <option value="1">Maccabi</option>
                     <option value="2">Clalit</option>
@@ -125,11 +125,11 @@
                   </div>
                 <div class="col-md-4">
                     <label for="inputPhoneNumber4" class="form-label">Phone Number:</label>
-                    <input type="tel" class="form-control" name="phoneNumber" id="inputPhoneNumber4">
+                    <input type="tel" class="form-control" id="inputPhoneNumber4">
                   </div>
                   <span class="title second-section">Patient's Location</span><hr>
                   <div class="col-md-4">
-                    <label for="inputDepartment" class="form-label">Department:</label>
+                    <label class="form-label">Department:</label>
                     <select class="form-select">
                       <option selected>select</option>
                       <option value="1">Casualty</option>
@@ -156,11 +156,11 @@
                     </div>
                 <div class="col-md-3">
                   <label for="inputRoom" class="form-label">Room Number</label>
-                  <input type="number" class="form-control" name="room" id="inputRoom">
+                  <input type="number" class="form-control" id="inputRoom">
                 </div>
                 <div class="col-md-3">
                   <label for="inputBed" class="form-label">Bed Number</label>
-                  <input type="number" class="form-control" name="bed" id="inputBed">
+                  <input type="number" class="form-control" id="inputBed">
                 </div>
                 <div class="col-sm-6"></div>
               </section>
@@ -182,16 +182,26 @@
                   <div class="col-md-4">
                     <input type="text" class="form-control" placeholder="Add Comment" id="inputSensitivity">
                   </div>
-                  <div id="addSensitivity" class="col-md-6"><img src="images/addForm.png"></div>
+                  <div class="col-md-6"><img src="images/addForm.png" alt="add"></div>
                   <span class="title second-section">Medications</span><hr> 
-                  <div class="col-md-6"><img src="images/addForm.png"></div>
+                  <div class="col-md-6"><img src="images/addForm.png" alt="add"></div>
               </section>
             </div>
             <section id="form-btns" class="d-flex">
-              <button type="button" id="back-button" class="btn btn-form1" disabled>Back</button>
-              <a href="./index.html"><button type="button" class="btn btn-form1">Cancel</button></a>
+              <button type="button" id="back-button" class="btn btn-form1">Back</button>
+              <!-- <form style="display: inline" action="./index.html" method="get"><button type="button" class="btn btn-form3">Cancel</button></form> -->
+              <a href="./index.html"><button type="button" class="btn btn-form3">Cancel</button></a>
               <button type="button" id="next-step-button" class="btn btn-form2">Next Step</button>
-              <input type="submit" value="Finish" id="submit-button" class="btn btn-form2"></input>
+              <button type="button" id="finish-button" class="btn btn-form2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Finish</button>
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header"><h1 class="modal-title" id="staticBackdropLabel">Patient Added Successfully !</h1></div>
+                            <div class="modal-body"><div id="successfull-icon"></div></div>
+                            <div class="modal-footer"><button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div>
+                        </div>
+                    </div>
+                </div>
             </section>
           </form>
         </div>

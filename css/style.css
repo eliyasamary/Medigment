@@ -5,6 +5,14 @@
 header, main, footer, nav, aside, section, div  {
     display: block;
 }
+a{
+    text-decoration: none;
+    color: #333333;
+}
+a:visited { 
+    text-decoration: none; 
+    color: #333333;
+}
 body{
     font-family: 'Catamaran', sans-serif;
     background-color: #cccccc;
@@ -30,13 +38,13 @@ main{
     padding-top: 35px;
     padding-left: 20px;
 }
-.nav-link {
+a.nav-link {
     font-weight: 500;
     color: #333333;
     font-size: 24px;
     line-height: 50px;
 }
-.active {
+a.active {
     color: #ffffff;
 }
 #user{
@@ -138,10 +146,6 @@ main {
     margin-top: 15px;
     position: relative;
     margin-left: 40px;
-}
-#BC-style{
-    text-decoration: none;
-    color: #333333;
 }
 .title-h1{
     font-weight: bold;
@@ -256,9 +260,6 @@ hr{
     width: 300px;
     padding-right: 3%;
 }
-
-
-/* form */
 form {
     margin-left: 20px;
     font-size: 20px;
@@ -288,6 +289,12 @@ form {
 .btn-form2:hover{
     background-color: #777777;
 }
+.btn-form3{
+    width: 100px;
+    background-color: #afafaf;
+    font-weight: bold;
+    color: #ffffff;
+}
 .progress{
     height: 20px;
 }
@@ -302,6 +309,40 @@ form {
 }
 .flex-container{
     display: flex;
+}
+#successfull-icon{
+    background-image: url(../images/Vsign.png);
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+.modal-content{
+    align-items: center;
+    border-color: #ffffff;
+}
+.modal{
+    top: 20%;
+}
+.modal-footer{
+    border-top: 0px
+}
+.modal-header{
+    border-bottom: 0px;
+}
+.modal-title{
+    font-size:28px;
+    margin-top: 10px;
+}
+.modal-body{
+    padding: 0px;
+}
+#form-back {
+    margin: 20px;
+    padding: 15px;
+    width:initial;
+    height: 600px;
+    background-color: #EEEEEE; 
+    border-radius: 10px;
 }
 
 
@@ -329,15 +370,6 @@ form {
     .list-group-item{
         height: 80px;
     }
-    #form-back {
-        margin: 20px;
-        padding: 15px;
-        width:initial;
-        height: 600px;
-        background-color: #EEEEEE; 
-        border-radius: 10px;
-    }
-
 }
 
 @media only screen and (max-width: 1075px ) {
@@ -407,12 +439,18 @@ form {
         display: none;
     }
     #form-back {
+        margin: 20px;
         padding: 15px;
+        width:initial;
+        height: 100%;
+        background-color: #EEEEEE; 
+        border-radius: 10px;
     }
     #form-btns{
         justify-content: center;
         margin-left: 0px;
         margin-top: 20px;
+        padding-bottom: 20px;
     }
     form{
         margin-left: 0px;
