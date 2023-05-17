@@ -89,7 +89,7 @@
               </div>
             </div>
           </div>
-          <form action="index.php" method="GET">
+          <form action="http://se.shenkar.ac.il/students/2022-2023/web1/dev_204/index.php" method="get">
           <div id="form-back">
               <section id="part1" class="row g-3">
                 <span class="title">Patient's Personal Details</span><hr>
@@ -107,7 +107,7 @@
                 </div>
                 <div class="col-md-4">
                   <label for="inputGender" class="form-label">Gender:</label>
-                  <select class="form-select">
+                  <select class="form-select" name="gender">
                     <option selected>select</option>
                     <option value="1">Male</option>
                     <option value="2">Female</option>
@@ -115,7 +115,7 @@
                 </div>
                 <div class="col-md-4">
                   <label for="inputHMO" class="form-label">HMO:</label>
-                  <select class="form-select">
+                  <select class="form-select" name="HMO">
                     <option selected>select</option>
                     <option value="1">Maccabi</option>
                     <option value="2">Clalit</option>
@@ -125,7 +125,7 @@
                   </div>
                 <div class="col-md-4">
                     <label for="inputPhoneNumber4" class="form-label">Phone Number:</label>
-                    <input type="tel" class="form-control" id="inputPhoneNumber4">
+                    <input type="tel" class="form-control" name="phoneNumber" id="inputPhoneNumber4">
                   </div>
                   <span class="title second-section">Patient's Location</span><hr>
                   <div class="col-md-4">
@@ -156,11 +156,11 @@
                     </div>
                 <div class="col-md-3">
                   <label for="inputRoom" class="form-label">Room Number</label>
-                  <input type="number" class="form-control" id="inputRoom">
+                  <input type="number" class="form-control" name="room" id="inputRoom">
                 </div>
                 <div class="col-md-3">
                   <label for="inputBed" class="form-label">Bed Number</label>
-                  <input type="number" class="form-control" id="inputBed">
+                  <input type="number" class="form-control" name="bed" id="inputBed">
                 </div>
                 <div class="col-sm-6"></div>
               </section>
@@ -191,7 +191,7 @@
               <button type="button" id="back-button" class="btn btn-form1" disabled>Back</button>
               <a href="./index.html"><button type="button" class="btn btn-form1">Cancel</button></a>
               <button type="button" id="next-step-button" class="btn btn-form2">Next Step</button>
-              <button type="submit" value="Submit" id="submit-button" class="btn btn-form2">Finish</button>
+              <input type="submit" value="Finish" id="submit-button" class="btn btn-form2"></input>
             </section>
           </form>
         </div>
