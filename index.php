@@ -25,9 +25,9 @@
         <?php 
             if($_GET["hmo"] == 1)
                 echo " Maccabi";
-            else if ($_GET["HMO"] == 2)
+            else if ($_GET["hmo"] == 2)
                 echo " Clalit";
-            else if ($_GET["HMO"] == 3)
+            else if ($_GET["hmo"] == 3)
                 echo " Meuhedet";
             else echo " Leumit";
         ?>
@@ -57,8 +57,7 @@
     </h3>
     <h4>
         <?php 
-            echo $_GET["sensitivity"];
-            echo " (" $_GET["sensitivityComment"] ").";
+            echo $_GET["sensitivity"] . " , " . $_GET["sensitivityComment"];
         ?>
     </h4>
     <h3>
@@ -66,7 +65,7 @@
     </h3>
     <h4>
         <?php 
-            echo $_GET["medicationSlot"] . " (" $_GET["medicationComment"] ").";
+            echo $_GET["medicationSlot"];
         ?>
     </h4>
 </body>
