@@ -340,12 +340,9 @@ form {
     margin: 20px;
     padding: 15px;
     width:initial;
-    height: 600px;
     background-color: #EEEEEE; 
     border-radius: 10px;
 }
-
-
 
 
 @media only screen and (min-width: 1075px ) {
@@ -369,6 +366,12 @@ form {
     }
     .list-group-item{
         height: 80px;
+    }
+
+    #addMedication-mdl{
+        width: 1000px;
+        margin: 0 auto ;
+        background-color: #eeeeee;
     }
 }
 

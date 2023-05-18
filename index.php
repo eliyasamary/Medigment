@@ -56,17 +56,17 @@
         Sensetivities:
     </h3>
     <h4>
-        <?php 
-            echo $_GET["Sensitivity"] . " (" $_GET["SensComment"] ").";
-        ?>
+        <!-- <?php 
+            echo $_GET["Sensitivity"] . " (" $_GET["SensitivityComment"] ").";
+        ?> -->
     </h4>
     <h3>
         Medications:
     </h3>
     <h4>
-        <?php 
+        <!-- <?php 
             echo $_GET["medicationSlot"] . " (" $_GET["medicationComment"] ").";
-        ?>
+        ?> -->
     </h4>
 </body>
 </html>

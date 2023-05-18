@@ -1,7 +1,10 @@
 window.onload = () => {
+    
     $("#part2").hide();
     $("#finish-button").hide();
     $("#back-button").hide();
+    $("#SensitivityAdded").hide();
+    
     document.getElementById("next-step-button").onclick = function() {
         $("#back-button").show();
         $("#process-bar").css("width", "100%");
@@ -25,4 +28,12 @@ window.onload = () => {
     document.getElementById("cancel-button").onclick = function() {
         window.location.href = 'http://se.shenkar.ac.il/students/2022-2023/web1/dev_204/index.html';
     };
+
+    document.getElementById("addSensitivity").onclick = function() {
+        $("#SensitivityAdded").show();
+    };
+
+//     document.getElementById("addMedication").onclick = function() {
+//         $("#SensitivityAdded").show();
+//     };
 };

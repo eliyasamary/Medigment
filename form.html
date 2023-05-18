@@ -156,11 +156,11 @@
                     </div>
                 <div class="col-md-3">
                   <label for="inputRoom" class="form-label">Room Number</label>
-                  <input type="number" class="form-control" name="room" id="inputRoom">
+                  <input type="number" class="form-control" name="room" id="inputRoom" min="1" max="20">
                 </div>
                 <div class="col-md-3">
                   <label for="inputBed" class="form-label">Bed Number</label>
-                  <input type="number" class="form-control" name="bed" id="inputBed">
+                  <input type="number" class="form-control" name="bed" id="inputBed" min="1" max="50">
                 </div>
                 <div class="col-sm-6"></div>
               </section>
@@ -169,49 +169,64 @@
                 <!-- Sensitivity section -->
                 <div class="row g-3" id="add-sensitive-section">
                   <span class="title">Sensitivities</span><hr>
-                  <div class="col-md-4">
-                    <select class="form-select" name="Sensitivity1[]">
-                      <option selected>Select Sensitivity</option>
-                      <option value="1">Anaphylaxis</option>
-                      <option value="2">Sinusitis</option>
-                      <option value="3">Urticaria & Angioedema</option>
-                      <option value="4">Rhinitis</option>
-                      <option value="5">Asthma</option>
-                      <option value="6">Autoimmunity-Immune Deficiency</option>
-                      <option value="7">Drug Allergy</option>
-                      <option value="8">Else...</option>
-                    </select>
-                    </div>
+                  <div class="row" id="SensitivityAdded">
                     <div class="col-md-4">
-                      <input type="text" class="form-control" placeholder="Add Comment" id="inputSensitivity">
-                    </div><div class="col-md-4"></div>
-                </div><br>
-                <!-- end of Sensitivity section -->
-
-                  <div id="add-section-btn" class="col-md-1"><img src="images/addForm.png" alt="add"></div><br>
-                  <span class="title second-section">Medications</span><hr><br>
-                  <div id="add-medication-btn" class="col-md-1" data-bs-toggle="modal" data-bs-target="#add-mdn-lb"><img src="images/addForm.png" alt="add"></div>
-              
-                  <!-- place for modal -->
-                </section>
-            </div>
-            <section id="form-btns" class="d-flex">
-              <button type="button" id="back-button" class="btn btn-form1">Back</button>
-              <button type="button" id="cancel-button" class="btn btn-form3">Cancel</button>
-              <button type="button" id="next-step-button" class="btn btn-form2">Next Step</button>
-              <button type="button" id="finish-button" class="btn btn-form2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Finish</button>
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header"><h1 class="modal-title" id="staticBackdropLabel">Patient Added Successfully !</h1></div>
-                            <div class="modal-body"><div id="successfull-icon"></div></div>
-                            <div class="modal-footer"><button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div>
+                      <select class="form-select" name="Sensitivity">
+                        <option selected>Select Sensitivity</option>
+                        <option value="Anaphylaxis">Anaphylaxis</option>
+                        <option value="Sinusitis">Sinusitis</option>
+                        <option value="Urticaria & Angioedema">Urticaria & Angioedema</option>
+                        <option value="Rhinitis">Rhinitis</option>
+                        <option value="Asthma">Asthma</option>
+                        <option value="Autoimmunity-Immune Deficiency">Autoimmunity-Immune Deficiency</option>
+                        <option value="Drug Allergy">Drug Allergy</option>
+                        <option value="">Else...</option>
+                      </select>
+                      </div>
+                      <div class="col-md-4">
+                        <input type="text" class="form-control" placeholder="Add Comment" name="SensitivityComment" id="SensitivityComment">
+                      </div>
+                    </div>
+                      <div class="col-md-6"><img src="images/addForm.png" alt="add" id="addSensitivity"></div>
+                      <span class="title second-section">Medications</span><hr> 
+                      <div class="col-md-6"><img src="images/addForm.png" alt="add" id="addMedication" data-bs-toggle="modal" data-bs-target="#staticBackdrop-AddMadicine"></div>
+                </div>
+              </section>
+              </div>
+                <section id="form-btns" class="d-flex">
+                  <button type="button" id="back-button" class="btn btn-form1">Back</button>
+                  <button type="button" id="cancel-button" class="btn btn-form3">Cancel</button>
+                  <button type="button" id="next-step-button" class="btn btn-form2">Next Step</button>
+                  <button type="button" id="finish-button" class="btn btn-form2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Finish</button>
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header"><h1 class="modal-title" id="staticBackdropLabel1">Patient Added Successfully !</h1></div>
+                                <div class="modal-body"><div id="successfull-icon"></div></div>
+                                <div class="modal-footer"><button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
-          </form>
-        </div>
-      </main>
-    </body>
-</html>
+                    <!-- add medication modal -->
+                    <div class="modal fade" id="staticBackdrop-AddMadicine" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content" id="addMedication-mdl">
+                                <div class="modal-header"><h1 class="modal-title" id="staticBackdropLabel2">Add medication:</h1></div><hr>
+                                <div class="modal-body row g-3">
+                                  <select class="form-select" name="medicationSlot" aria-label="Default select example">
+                                    <option selected>Search Medicine Name</option>
+                                    <option value="Indapamide">Indapamide</option>
+                                    <option value="Lindane">Lindane</option>
+                                    <option value="Clindamycin">Clindamycin</option>
+                                  </select>
+                                </div>
+                                <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Done</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+              </form>
+            </div>
+          </main>
+        </body>
+    </html>
