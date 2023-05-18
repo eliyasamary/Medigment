@@ -89,33 +89,33 @@
               </div>
             </div>
           </div>
-          <form>
+          <form action="http://se.shenkar.ac.il/students/2022-2023/web1/dev_204/index.php" method="get">
           <div id="form-back">
               <section id="part1" class="row g-3">
                 <span class="title">Patient's Personal Details</span><hr>
                 <div class="col-md-4">
                   <label for="inputFirstName4" class="form-label">First Name:</label>
-                  <input type="text" class="form-control" id="inputFirstName4">
+                  <input type="text" class="form-control" name="firstName" id="inputFirstName4">
                 </div>
                 <div class="col-md-4">
                   <label for="inputLastName4" class="form-label">Last Name:</label>
-                  <input type="text" class="form-control" id="inputLastName4">
+                  <input type="text" class="form-control" name="lastName" id="inputLastName4">
                 </div>
                 <div class="col-md-4">
                   <label for="inputID4" class="form-label">ID Number:</label>
-                  <input type="tel" class="form-control" id="inputID4">
+                  <input type="tel" class="form-control" name="idNum" id="inputID4">
                 </div>
                 <div class="col-md-4">
                   <label class="form-label">Gender:</label>
-                  <select class="form-select">
+                  <select class="form-select" name="gender">
                     <option selected>select</option>
-                    <option value="1">Male</option>
-                    <option value="2">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
                   </select>
                 </div>
                 <div class="col-md-4">
                   <label class="form-label">HMO:</label>
-                  <select class="form-select">
+                  <select class="form-select" name="hmo">
                     <option selected>select</option>
                     <option value="1">Maccabi</option>
                     <option value="2">Clalit</option>
@@ -125,71 +125,79 @@
                   </div>
                 <div class="col-md-4">
                     <label for="inputPhoneNumber4" class="form-label">Phone Number:</label>
-                    <input type="tel" class="form-control" id="inputPhoneNumber4">
+                    <input type="tel" class="form-control" name="phoneNumber" id="inputPhoneNumber4">
                   </div>
                   <span class="title second-section">Patient's Location</span><hr>
                   <div class="col-md-4">
                     <label class="form-label">Department:</label>
-                    <select class="form-select">
+                    <select class="form-select" name="department">
                       <option selected>select</option>
-                      <option value="1">Casualty</option>
-                      <option value="2">Operating Theatre (OT)</option>
-                      <option value="3">Intensive Care Unit (ICU)</option>
-                      <option value="4">Anesthesiology</option>
-                      <option value="5">Cardiology</option>
-                      <option value="6">ENT</option>
-                      <option value="7">Geriatric</option>
-                      <option value="8">Gastroenterology</option>
-                      <option value="9">General Surgery</option>
-                      <option value="10">Gynaecology</option>
-                      <option value="11">Haematology</option>
-                      <option value="12">Pediatrics</option>
-                      <option value="13">Neurology</option>
-                      <option value="14">Oncology</option>
-                      <option value="15">Opthalmology</option>
-                      <option value="16">Orthopaedic</option>
-                      <option value="17">Urology</option>
-                      <option value="18">Psychiatry</option>
-                      <option value="19">Inpatient (IPD)</option>
-                      <option value="20">Outpatient (OPD)</option>
+                      <option value="Casualty">Casualty</option>
+                      <option value="Operating Theatre (OT)">Operating Theatre (OT)</option>
+                      <option value="Intensive Care Unit (ICU)">Intensive Care Unit (ICU)</option>
+                      <option value="Anesthesiology">Anesthesiology</option>
+                      <option value="Cardiology">Cardiology</option>
+                      <option value="ENT">ENT</option>
+                      <option value="Geriatric">Geriatric</option>
+                      <option value="Gastroenterology">Gastroenterology</option>
+                      <option value="General Surgery">General Surgery</option>
+                      <option value="Gynaecology">Gynaecology</option>
+                      <option value="Haematology">Haematology</option>
+                      <option value="Pediatrics">Pediatrics</option>
+                      <option value="Neurology">Neurology</option>
+                      <option value="Oncology">Oncology</option>
+                      <option value="Opthalmology">Opthalmology</option>
+                      <option value="Orthopaedic">Orthopaedic</option>
+                      <option value="Urology">Urology</option>
+                      <option value="Psychiatry">Psychiatry</option>
+                      <option value="Inpatient (IPD)">Inpatient (IPD)</option>
+                      <option value="Outpatient (OPD)">Outpatient (OPD)</option>
                     </select>
                     </div>
                 <div class="col-md-3">
                   <label for="inputRoom" class="form-label">Room Number</label>
-                  <input type="number" class="form-control" id="inputRoom">
+                  <input type="number" class="form-control" name="room" id="inputRoom">
                 </div>
                 <div class="col-md-3">
                   <label for="inputBed" class="form-label">Bed Number</label>
-                  <input type="number" class="form-control" id="inputBed">
+                  <input type="number" class="form-control" name="bed" id="inputBed">
                 </div>
                 <div class="col-sm-6"></div>
               </section>
-              <section id="part2" class="row g-3">
-                <span class="title">Sensitivities</span><hr>
-                <div class="col-md-4">
-                  <select class="form-select">
-                    <option selected>Select Sensitivity</option>
-                    <option value="1">Anaphylaxis</option>
-                    <option value="2">Sinusitis</option>
-                    <option value="3">Urticaria & Angioedema</option>
-                    <option value="4">Rhinitis</option>
-                    <option value="5">Asthma</option>
-                    <option value="6">Autoimmunity-Immune Deficiency</option>
-                    <option value="7">Drug Allergy</option>
-                    <option value="8">Else...</option>
-                  </select>
-                  </div>
+              <section id="part2" >
+                
+                <!-- Sensitivity section -->
+                <div class="row g-3" id="add-sensitive-section">
+                  <span class="title">Sensitivities</span><hr>
                   <div class="col-md-4">
-                    <input type="text" class="form-control" placeholder="Add Comment" id="inputSensitivity">
-                  </div>
-                  <div class="col-md-6"><img src="images/addForm.png" alt="add"></div>
-                  <span class="title second-section">Medications</span><hr> 
-                  <div class="col-md-6"><img src="images/addForm.png" alt="add"></div>
-              </section>
+                    <select class="form-select" name="Sensitivity1[]">
+                      <option selected>Select Sensitivity</option>
+                      <option value="1">Anaphylaxis</option>
+                      <option value="2">Sinusitis</option>
+                      <option value="3">Urticaria & Angioedema</option>
+                      <option value="4">Rhinitis</option>
+                      <option value="5">Asthma</option>
+                      <option value="6">Autoimmunity-Immune Deficiency</option>
+                      <option value="7">Drug Allergy</option>
+                      <option value="8">Else...</option>
+                    </select>
+                    </div>
+                    <div class="col-md-4">
+                      <input type="text" class="form-control" placeholder="Add Comment" id="inputSensitivity">
+                    </div><div class="col-md-4"></div>
+                </div><br>
+                <!-- end of Sensitivity section -->
+
+                  <div id="add-section-btn" class="col-md-1"><img src="images/addForm.png" alt="add"></div><br>
+                  <span class="title second-section">Medications</span><hr><br>
+                  <div id="add-medication-btn" class="col-md-1" data-bs-toggle="modal" data-bs-target="#add-mdn-lb"><img src="images/addForm.png" alt="add"></div>
+              
+                  <!-- place for modal -->
+                </section>
             </div>
             <section id="form-btns" class="d-flex">
               <button type="button" id="back-button" class="btn btn-form1">Back</button>
-              <a href="./index.html"><button type="button" class="btn btn-form3">Cancel</button></a>
+              <button type="button" id="cancel-button" class="btn btn-form3">Cancel</button>
               <button type="button" id="next-step-button" class="btn btn-form2">Next Step</button>
               <button type="button" id="finish-button" class="btn btn-form2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Finish</button>
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

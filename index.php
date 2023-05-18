@@ -7,6 +7,8 @@
     <title>Patient Details</title>
 </head>
 <body>
+    <h1>Patient added sucssesfuly!</h1>
+    <h2>Details:</h2>
     <h3>First name: 
         <?php echo $_GET["firstName"]; ?>
     </h3>
@@ -17,15 +19,11 @@
         <?php echo $_GET["idNum"]; ?>
     </h3>
     <h3>Gender: 
-        <?php
-            if ($_GET["gender"] == 1) 
-                    echo " Male"; 
-            else echo " Female";          
-        ?>
+        <?php echo $_GET["gender"]; ?>
     </h3>
     <h3>HMO: 
         <?php 
-            if($_GET["HMO"] == 1)
+            if($_GET["hmo"] == 1)
                 echo " Maccabi";
             else if ($_GET["HMO"] == 2)
                 echo " Clalit";
@@ -41,6 +39,7 @@
     </h3>
     <h3>Department: 
         <?php 
+            echo $_GET["department"];
         ?>
     </h3>
     <h3>Room Number: 
@@ -53,5 +52,21 @@
             echo $_GET["bed"];
         ?>
     </h3>
+    <h3>
+        Sensetivities:
+    </h3>
+    <h4>
+        <?php 
+            echo $_GET["Sensitivity"] . " (" $_GET["SensComment"] ").";
+        ?>
+    </h4>
+    <h3>
+        Medications:
+    </h3>
+    <h4>
+        <?php 
+            echo $_GET["medicationSlot"] . " (" $_GET["medicationComment"] ").";
+        ?>
+    </h4>
 </body>
 </html>
