@@ -65,7 +65,7 @@
     </h3>
     <h4>
         <?php 
-            echo $_GET["medicationSlot"];
+            echo $_GET["medicationSlot"] . " | " . $_GET["madicationType"] . " | " . $_GET["madicationStrengh"] . " " . $_GET["madicationUnits"];
         ?>
     </h4>
 </body>

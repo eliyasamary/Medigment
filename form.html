@@ -213,12 +213,52 @@
                             <div class="modal-content" id="addMedication-mdl">
                                 <div class="modal-header"><h1 class="modal-title" id="staticBackdropLabel2">Add medication:</h1></div><hr>
                                 <div class="modal-body row g-3">
-                                  <select class="form-select" name="medicationSlot" aria-label="Default select example">
+                                  <select class="form-select col-md-4" name="medicationSlot" aria-label="Default select example">
                                     <option selected>Search Medicine Name</option>
                                     <option value="Indapamide">Indapamide</option>
                                     <option value="Lindane">Lindane</option>
                                     <option value="Clindamycin">Clindamycin</option>
                                   </select>
+                                  <div class="col-md-8"></div>
+                                  <hr>
+                                  <div class="col-md-3">
+                                    <label class="form-label">Type</label>
+                                    <select class="form-select" name="madicationType" aria-label="Default select example">
+                                      <option selected>Type</option>
+                                      <option value="Liquid">Liquid</option>
+                                      <option value="Tablet">Tablet</option>
+                                      <option value="Capsules">Capsules</option>
+                                      <option value="Drops">Drops</option>
+                                      <option value="Injections">Injections</option>
+                                      <option value="Inhalers">Inhalers</option>
+                                      <option value="Pill">Pill</option>
+                                    </select>
+                                  </div>
+                                  <div class="col-md-2">
+                                    <label for="inputStrange" class="form-label">Strengh</label>
+                                    <input type="number" class="form-control" name="madicationStrengh" id="inputStrange" min="1" max="1000">
+                                  </div>
+                                  <div class="col-md-3">
+                                    <label class="form-label">Units</label>
+                                    <select class="form-select" name="madicationUnits" aria-label="Default select example">
+                                      <option selected>Units</option>
+                                      <option value="grams">grams</option>
+                                      <option value="Mg">Mg</option>
+                                      <option value="Kg">Kg</option>
+                                      <option value="Ml">Ml</option>
+                                      <option value="drops">drops</option>
+                                    </select>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <label class="form-label">Frequency</label>
+                                    <select class="form-select" name="madicationUnits" aria-label="Default select example">
+                                      <option selected>Frequency</option>
+                                      <option value="Every day">Every day</option>
+                                      <option value="Every week">Every week</option>
+                                      <option value="Every month">Every month</option>
+                                      <option value="Once">Once</option>
+                                    </select>
+                                  </div>
                                 </div>
                                 <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Done</button></div>
                             </div>
