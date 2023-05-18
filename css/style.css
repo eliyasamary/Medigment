@@ -321,7 +321,7 @@ form {
     border-color: #ffffff;
 }
 .modal{
-    top: 20%;
+    top: 10%;
 }
 .modal-footer{
     border-top: 0px
@@ -342,6 +342,13 @@ form {
     width:initial;
     background-color: #EEEEEE; 
     border-radius: 10px;
+}
+.addedItem{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.row-style1{
+    margin-top: 20px;
 }
 
 
@@ -366,12 +373,6 @@ form {
     }
     .list-group-item{
         height: 80px;
-    }
-
-    #addMedication-mdl{
-        width: 1000px;
-        margin: 0 auto ;
-        background-color: #eeeeee;
     }
 }
 

@@ -4,6 +4,7 @@ window.onload = () => {
     $("#finish-button").hide();
     $("#back-button").hide();
     $("#SensitivityAdded").hide();
+    $("#MedicationAdded").hide();
     
     document.getElementById("next-step-button").onclick = function() {
         $("#back-button").show();
@@ -33,7 +34,7 @@ window.onload = () => {
         $("#SensitivityAdded").show();
     };
 
-//     document.getElementById("addMedication").onclick = function() {
-//         $("#SensitivityAdded").show();
-//     };
+    document.getElementById("addMedication").onclick = function() {
+        $("#MedicationAdded").show();
+    };
 };
