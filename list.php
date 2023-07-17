@@ -1,0 +1,189 @@
+<?php
+    session_start();
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="js/script.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+        <title>Patients</title>
+    </head>
+    <body id="list-page">
+    <header class="sticky-top">
+        <nav id="top-nav" class="navbar navbar-dark">
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end text-bg-dark bg-dark" tabindex="-1" id="offcanvasDarkNavbar">
+            <div class="offcanvas-header">
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="user" id="hamburger-nav-user">
+                <?php
+                echo '<img class="user-photo" src="' . $_SESSION["user_img"] . '" alt="user">';
+                echo '<span id="user-name">' . $_SESSION["user_name"] . '</span>';
+                ?>
+                </div> 
+              <ul class="navbar-nav flex-column me-auto">
+                <li class="nav-item">
+                  <a class="nav-link top-nav-link" href="#">Home Page</a>
+                </li>
+                <?php 
+                if($_SESSION["user_type"] == "carer"){
+                    echo '<li class="nav-item">';
+                    echo '<a class="nav-link top-nav-link active" href="list.php">Patients</a>';
+                    echo '</li>';
+                }
+                if($_SESSION["user_type"] == "patient"){
+                    echo '<li class="nav-item">';
+                    echo '<a class="nav-link top-nav-link active" href="list.php">Medicines</a>';
+                    echo '</li>';
+                }
+                ?>
+                <li class="nav-item">
+                  <a class="nav-link top-nav-link" href="#">Settings</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <div id="header-container">
+          <a href="#" id="logo"></a>
+          <div class="user" id="main-nav-user">
+            <?php
+            echo '<span id="user-name">' . $_SESSION["user_name"] . '</span>';
+            echo '<img class="user-photo" src="' . $_SESSION["user_img"] . '" alt="user">';
+            ?>
+          </div>  
+        </div>
+        <div id="sm-h1"><span></span></div>
+    </header>
+      <main>
+        <nav id="main-nav">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home Page</a>
+            </li>
+            <?php 
+            if($_SESSION["user_type"] == "carer"){
+                echo '<li class="nav-item">';
+                echo '<a class="nav-link active" aria-current="page" href="list.php">Patients</a>';
+                echo '</li>';
+            }
+            if($_SESSION["user_type"] == "patient"){
+                echo '<li class="nav-item">';
+                echo '<a class="nav-link active" aria-current="page" href="list.php">Medicines</a>';
+                echo '</li>';
+            }
+            ?>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Settings</a>
+            </li>
+          </ul>
+        </nav>
+        <div id="content">
+          <div id="BC-H1"> 
+            <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item breadcrumb-add"><a href="#"></a></li>
+              </ol>
+            </nav>
+            <?php 
+                if($_SESSION["user_type"] == "carer"){
+                    echo '<h1 class="title-h1">Patients</h1>';
+                }
+                if($_SESSION["user_type"] == "patient"){
+                    echo '<h1 class="title-h1">Medicines</h1>';
+                }
+                ?>
+          </div>
+          <div class="modify">
+            <!-- <div class="search-bar">
+              <div class="container-fluid">
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                </form>
+              </div>
+            </div> -->
+            <div id="modify-btns">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Sort
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item" href="#">A-Z</a></li>
+                  <li><a class="dropdown-item" href="#">Z-A</a></li>
+                  <li><a class="dropdown-item" href="#">Last Added</a></li>
+                </ul>
+              </div>
+              <!-- <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  View
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item" href="#">Grid</a></li>
+                  <li><a class="dropdown-item active" href="#">List</a></li>
+                </ul>
+              </div> -->
+              <!-- <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Filter
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item active" href="#">None</a></li>
+                  <li><a class="dropdown-item" href="#">Men</a></li>
+                  <li><a class="dropdown-item" href="#">Female</a></li>
+                </ul>
+              </div> -->
+            </div>
+            <!-- <div id="add-patient-btn">
+              <a href="addPatient.html"><img src="./images/addPatient.png" alt="Add Patient"></a>
+              <span>Add Patient</span>
+            </div> -->
+          </div>
+          <section id="list">
+            <div class="list-group">
+              <ul class="list-group">
+              <?php 
+              // sort
+                if(!empty($_POST["bbbb"])){
+                  $query 	= "SELECT * FROM tbl_204 WHERE category = '" . $_POST["category"] . "'";
+                }
+                else {
+                  $query 	= "SELECT * FROM tbl_204 order by name";                
+                }
+
+                // user
+                if($_SESSION["user_type"] == "carer"){
+
+                }
+                if($_SESSION["user_type"] == "patient"){
+
+                }
+                ?>
+                <!-- result echo (php) -->
+                <li class="list-group-item">
+                  <div class="object-details">
+                    <a class="dropdown-item object-name" href="object.html?patientId=1"><span>Guy Levy</span></a>
+                  </div>                        
+                </li>
+                <!--  -->
+
+
+              </ul>
+            </div>
+          </section>
+        </div>
+      </main>
+    </body>
+</html>
