@@ -38,3 +38,25 @@ window.onload = () => {
         $("#MedicationAdded").show();
     };
 };
+
+function showData(data) {
+
+    const navFrag = document.createDocumentFragment(); 
+    
+    for(const key in data.sorts) {
+        const li = document.createElement('li');
+
+        sHtml = `<a class="dropdown-item" href="./list.php?sort=${data.sorts[key].id}">${data.sorts[key].name}</a>`;
+
+        li.innerHTML = sHtml;
+
+        navFrag.appendChild(li);
+   }
+
+   document.getElementById("nav-place").appendChild(navFrag);
+}
+
+
+fetch("./data/sorts.json")
+    .then(Response => Response.json())
+    .then(data => showData(data));

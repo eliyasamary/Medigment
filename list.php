@@ -36,7 +36,7 @@
                 </div> 
               <ul class="navbar-nav flex-column me-auto">
                 <li class="nav-item">
-                  <a class="nav-link top-nav-link" href="#">Home Page</a>
+                  <a class="nav-link top-nav-link" href="./homePage.php">Home Page</a>
                 </li>
                 <?php 
                 if($_SESSION["user_type"] == "carer"){
@@ -58,7 +58,7 @@
           </div>
         </nav>
         <div id="header-container">
-          <a href="#" id="logo"></a>
+          <a href="homePage.php" id="logo"></a>
           <div class="user" id="main-nav-user">
             <?php
             echo '<span id="user-name">' . $_SESSION["user_name"] . '</span>';
@@ -72,7 +72,7 @@
         <nav id="main-nav">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link" href="#">Home Page</a>
+              <a class="nav-link" href="./homePage.php">Home Page</a>
             </li>
             <?php 
             if($_SESSION["user_type"] == "carer"){
@@ -120,10 +120,7 @@
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Sort
                 </button>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="#">A-Z</a></li>
-                  <li><a class="dropdown-item" href="#">Z-A</a></li>
-                  <li><a class="dropdown-item" href="#">Last Added</a></li>
+                <ul class="dropdown-menu dropdown-menu-dark" id="nav-place">
                 </ul>
               </div>
               <!-- <div class="dropdown">
@@ -155,30 +152,73 @@
             <div class="list-group">
               <ul class="list-group">
               <?php 
-              // sort
-                if(!empty($_POST["bbbb"])){
-                  $query 	= "SELECT * FROM tbl_204 WHERE category = '" . $_POST["category"] . "'";
-                }
-                else {
-                  $query 	= "SELECT * FROM tbl_204 order by name";                
-                }
 
-                // user
+              include "db.php";
+
+
+              $query1 = '';
+              $sortfield = '';
+              $query2 = ';';
+
+
+
                 if($_SESSION["user_type"] == "carer"){
 
-                }
-                if($_SESSION["user_type"] == "patient"){
+                  $query1 = "SELECT * FROM tbl_204_carer_patient as c 
+                  INNER JOIN tbl_204_users as u ON c.patient_id = u.user_id
+                  WHERE c.carer_id= " . $_SESSION["user_id"];
 
+                  $sortfield = "u.first_name";
+
+                  $name = 1;
+
+                }
+                else if ($_SESSION["user_type"] == "patient"){
+
+                  $query1 = "SELECT * FROM tbl_204_medicine_patient
+                  INNER JOIN tbl_204_medicine USING(med_id)
+                  WHERE user_id = " . $_SESSION["user_id"];
+
+                  $sortfield = "med_name";
+
+                  $name = 0;
+
+                }
+                if(!empty($_GET["sort"])){
+                  if($_GET["sort"] == 1){
+                    $query2 = " ORDER BY " . $sortfield . " ASC;" ;
+                  } else if($_GET["sort"] == 2){
+                    $query2 = " ORDER BY " . $sortfield . " DESC;" ;
+                  } else if($_GET["sort"] == 3){
+                    $query2 = " ORDER BY date DESC;" ;
+                  } else $query2 = ";";
+                }
+                else {$query2 = ";";}
+                
+                $query = $query1 . $query2;
+
+                $result = mysqli_query($connection, $query);
+
+                if($result->num_rows > 0) {
+                  if($name == 1) {
+                    while($row = mysqli_fetch_array($result)) {
+                      echo '<li class="list-group-item">
+                      <div class="object-details">
+                        <a class="dropdown-item object-name" href="object.html?patientId=1"><span>' . $row["first_name"]  .  '</span></a>
+                      </div>                        
+                    </li>';
+                    } 
+                  } else {
+                    while($row = mysqli_fetch_array($result)) {
+                    echo '<li class="list-group-item">
+                    <div class="object-details">
+                      <a class="dropdown-item object-name" href="object.html?patientId=1"><span>' . $row["med_name"]  .  '</span></a>
+                    </div>                        
+                  </li>';
+                    }
+                  }
                 }
                 ?>
-                <!-- result echo (php) -->
-                <li class="list-group-item">
-                  <div class="object-details">
-                    <a class="dropdown-item object-name" href="object.html?patientId=1"><span>Guy Levy</span></a>
-                  </div>                        
-                </li>
-                <!--  -->
-
 
               </ul>
             </div>
