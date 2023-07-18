@@ -89,7 +89,9 @@
         </form>
       </main>
     <?php 
+      if(!empty($_POST["loginEmail"])){
         mysqli_free_result($result);
+      }
     ?>
     </body>
 </html>
