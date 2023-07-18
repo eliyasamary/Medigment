@@ -5,12 +5,12 @@
     { "id": 3, "name": "Last Added" }
   ],
   "types": [
-    { "id" : 1 , "name" : "Liquid"},
-    { "id" : 1 , "name" : "Tablet"},
-    { "id" : 1 , "name" : "Capsules"},
-    { "id" : 1 , "name" : "Drops"},
-    { "id" : 1 , "name" : "Injections"},
-    { "id" : 1 , "name" : "Inhalers"},
-    { "id" : 1 , "name" : "Pill"}
+    {"name" : "Liquid"},
+    {"name" : "Tablet"},
+    {"name" : "Capsules"},
+    {"name" : "Drops"},
+    {"name" : "Injections"},
+    {"name" : "Inhalers"},
+    {"name" : "Pill"}
   ]
 }
