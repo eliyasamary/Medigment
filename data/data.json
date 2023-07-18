@@ -9,6 +9,9 @@
       "gender": [
         { "Name": "Male" },
         { "Name": "Female" },
+        { "Name": "Non-binary" },
+        { "Name": "Transgender" },
+        { "Name": "Intersex"},
         { "Name": "prefer not to answer" }
       ],
       "hmo": [
