@@ -108,13 +108,6 @@
                 ?>
           </div>
           <div class="modify">
-            <!-- <div class="search-bar">
-              <div class="container-fluid">
-                <form class="d-flex">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                </form>
-              </div>
-            </div> -->
             <div id="modify-btns">
               <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -123,44 +116,16 @@
                 <ul class="dropdown-menu dropdown-menu-dark" id="nav-place">
                 </ul>
               </div>
-              <!-- <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  View
-                </button>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="#">Grid</a></li>
-                  <li><a class="dropdown-item active" href="#">List</a></li>
-                </ul>
-              </div> -->
-              <!-- <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Filter
-                </button>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item active" href="#">None</a></li>
-                  <li><a class="dropdown-item" href="#">Men</a></li>
-                  <li><a class="dropdown-item" href="#">Female</a></li>
-                </ul>
-              </div> -->
             </div>
-            <!-- <div id="add-patient-btn">
-              <a href="addPatient.html"><img src="./images/addPatient.png" alt="Add Patient"></a>
-              <span>Add Patient</span>
-            </div> -->
           </div>
           <section id="list">
             <div class="list-group">
               <ul class="list-group">
               <?php 
-
-              include "db.php";
-
-
-              $query1 = '';
-              $sortfield = '';
-              $query2 = ';';
-
-
+                include "db.php";
+                $query1 = '';
+                $sortfield = '';
+                $query2 = ';';
 
                 if($_SESSION["user_type"] == "carer"){
 
@@ -204,7 +169,8 @@
                     while($row = mysqli_fetch_array($result)) {
                       echo '<li class="list-group-item">
                       <div class="object-details">
-                        <a class="dropdown-item object-name" href="object.html?patientId=1"><span>' . $row["first_name"]  .  '</span></a>
+                      <img class="obj-list-img" src="images/patient.png">
+                        <a class="dropdown-item object-name" href="object.html?patientId=' . $row["user_id"] . '"><span>' . $row["first_name"]  .  '</span></a>
                       </div>                        
                     </li>';
                     } 
@@ -212,14 +178,14 @@
                     while($row = mysqli_fetch_array($result)) {
                     echo '<li class="list-group-item">
                     <div class="object-details">
-                      <a class="dropdown-item object-name" href="object.html?patientId=1"><span>' . $row["med_name"]  .  '</span></a>
+                      <img class="obj-list-img" src="images/med.png">
+                      <a class="dropdown-item object-name" href="object.html?medId=' . $row["med_id"] . '"><span>' . $row["med_name"]  .  '</span></a>
                     </div>                        
                   </li>';
                     }
                   }
                 }
-                ?>
-
+              ?>
               </ul>
             </div>
           </section>
