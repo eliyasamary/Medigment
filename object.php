@@ -1,5 +1,14 @@
 <?php
     session_start();
+
+    include "db.php";
+
+    $query = "SELECT * FROM tbl_204_users WHERE user_id = " . $_GET["patient_id"] . ";";
+    
+    $result = mysqli_query($connection, $query);
+
+    $row = mysqli_fetch_assoc($result);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,12 +50,12 @@
                 <?php 
                 if($_SESSION["user_type"] == "carer"){
                     echo '<li class="nav-item">';
-                    echo '<a class="nav-link top-nav-link" href="list.php">Patients</a>';
+                    echo '<a class="nav-link top-nav-link" href="./list.php">Patients</a>';
                     echo '</li>';
                 }
                 if($_SESSION["user_type"] == "patient"){
                     echo '<li class="nav-item">';
-                    echo '<a class="nav-link top-nav-link" href="list.php">Medicines</a>';
+                    echo '<a class="nav-link top-nav-link" href="./list.php">Medicines</a>';
                     echo '</li>';
                 }
                 ?>
@@ -77,12 +86,12 @@
             <?php 
             if($_SESSION["user_type"] == "carer"){
                 echo '<li class="nav-item">';
-                echo '<a class="nav-link" aria-current="page" href="list.php">Patients</a>';
+                echo '<a class="nav-link" aria-current="page" href="./list.php">Patients</a>';
                 echo '</li>';
             }
             if($_SESSION["user_type"] == "patient"){
                 echo '<li class="nav-item">';
-                echo '<a class="nav-link" aria-current="page" href="list.php">Medicines</a>';
+                echo '<a class="nav-link" aria-current="page" href="./list.php">Medicines</a>';
                 echo '</li>';
             }
             ?>
@@ -95,12 +104,12 @@
                 <div id="BC-H1"> 
                     <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                       <ol class="breadcrumb BC-style">
-                        <li class="breadcrumb-item breadcrumb-add"><a href="#">Patients</a></li>
-                        <li class="breadcrumb-item breadcrumb-add"><a href="#">Guy Levy</a></li>
+                        <li class="breadcrumb-item breadcrumb-add"><a href="./list.php">Patients</a></li>
+                        <li class="breadcrumb-item breadcrumb-add"><a href="#"> <?php echo $row["first_name"] . " " . $row["last_name"]; ?> </a></li>
                       </ol>
                     </nav>
                     <div class="options-h1-container">
-                      <h1 class="title-h1">Guy Levy</h1>
+                      <h1 class="title-h1"> <?php echo $row["first_name"] . " " . $row["last_name"]; ?> </h1>
                       <div class="paitent-options patient-info-options">
                         <div class="icon-with-text"><a href="#"><img src="./images/add.png" alt="add" class="sm-icon"></a><span>Add Med</span></div>
                         <div class="icon-with-text"><a href="#"><img src="./images/edit.png" alt="edit" class="sm-icon"></a><span>Edit</span></div>
@@ -109,25 +118,51 @@
                     </div>
                 </div>
                 <div class="patient-info-container">
-                  <div class="card">
+
+                <div class="card">
+                    <div class="card-body">
+                      <span class="title">Patient's Medications </span><hr>
+                      <div class="grid text-start">
+                          <?php
+                            $query2 = "SELECT * FROM tbl_204_medicine_patient
+                            INNER JOIN tbl_204_medicine USING(med_id)
+                            WHERE user_id = " . $_GET['patient_id'] . ";";
+                            
+                            $result2 = mysqli_query($connection, $query2);
+
+                            while($row2 = mysqli_fetch_array($result2)) {
+                                echo '<div class="row">
+                                <div class="col-12">' . $row2["med_name"]  .  
+                                  '<div class="data">
+                                    <div class="col-4">' . $row2["strengh"] . " " . $row2["units"] . '</div>
+                                    <div class="col-4">' . $row2["frequency"] . '</div>
+                                    <div class="col-4"> ' . $row2["many_times"] . ' </div>
+                                  </div>
+                                </div>
+                              </div>';
+                            }
+                          ?>
+                      </div>
+                    </div>
+                  </div>
+                <div class="card">
                     <div class="card-body">
                       <span class="title">Patient's Personal Details</span><hr>
                       <div class="grid text-start">
                         <div class="row">
                           <div class="col-6">ID Number
-                            <div class="data">318673376</div>
+                            <div class="data"> <?php echo $row["num_id"]; ?> </div>
                           </div>
                           <div class="col-6">Gender
-                            <div class="data">Male</div>
+                            <div class="data"> <?php echo $row["gender"]; ?> </div>
                           </div>
                         </div>
                         <div class="row">
                           <div class="col-6">HMO
-                            <div class="data">Maccabi</div>
+                            <div class="data"> <?php echo $row["hmo"]; ?> </div>
                           </div>
-                          <div class="col-6">
-                            Phone Number
-                            <div class="data">0508934756</div>
+                          <div class="col-6">Phone Number
+                            <div class="data"> <?php echo $row["phone"]; ?> </div>
                           </div>
                         </div>
                         <div class="row">
@@ -137,13 +172,13 @@
                         </div>
                       </div>
                     </div>
-                    <div class="card-body">
+                    <!-- <div class="card-body">
                       <span class="title">Patient's Location</span><hr>
                       <div class="grid text-start">
                         <div class="row">
                           <div class="col-12">Department
                             <div class="data">Rehabilitation</div>
-                        </div>
+                          </div>
                         </div>
                         <div class="row">
                           <div class="col-6">Room Number
@@ -154,23 +189,7 @@
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">
-                      <span class="title">Patient's Medications </span><hr>
-                      <div class="grid text-start">
-                        <div class="row">
-                          <div class="col-12">Indapamide
-                            <div class="data">
-                              <div class="col-4">500 mg</div>
-                              <div class="col-4">evey day</div>
-                              <div class="col-4">twice a day</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
             </div>
