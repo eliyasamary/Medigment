@@ -4,19 +4,13 @@
     { "id": 2, "name": "Z-A" },
     { "id": 3, "name": "Last Added" }
   ],
-  "options": [
-    {
-      "gender": [
-        { "Name": "Male" },
-        { "Name": "Female" },
-        { "Name": "prefer not to answer" }
-      ],
-      "hmo": [
-        { "Name": "Maccabi" },
-        { "Name": "Clalit" },
-        { "Name": "Meuhedet" },
-        { "Name": "Leumit" }
-      ]
-    }
+  "types": [
+    { "id" : 1 , "name" : "Liquid"},
+    { "id" : 1 , "name" : "Tablet"},
+    { "id" : 1 , "name" : "Capsules"},
+    { "id" : 1 , "name" : "Drops"},
+    { "id" : 1 , "name" : "Injections"},
+    { "id" : 1 , "name" : "Inhalers"},
+    { "id" : 1 , "name" : "Pill"}
   ]
 }

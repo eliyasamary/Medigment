@@ -56,7 +56,6 @@ function showData(data) {
    document.getElementById("nav-place").appendChild(navFrag);
 }
 
-
-fetch("./data/sorts.json")
+fetch("./data/data.json")
     .then(Response => Response.json())
     .then(data => showData(data));
