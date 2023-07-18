@@ -15,7 +15,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
-        <title>Patients</title>
+        <title>List</title>
     </head>
     <body id="list-page">
     <header class="sticky-top">
@@ -51,7 +51,10 @@
                 }
                 ?>
                 <li class="nav-item">
-                  <a class="nav-link top-nav-link" href="#">Settings</a>
+                  <a class="nav-link top-nav-link" href="#"><img class="logout-btn" src="images/settings.png">Settings</a>
+                </li>
+                <li>
+                  <a class="nav-link" href="logout.php"><img class="logout-btn" src="images/logout.png">Logout</a>
                 </li>
               </ul>
             </div>
@@ -60,19 +63,32 @@
         <div id="header-container">
           <a href="homePage.php" id="logo"></a>
           <div class="user" id="main-nav-user">
-            <?php
-            echo '<span id="user-name">' . $_SESSION["user_name"] . '</span>';
-            echo '<img class="user-photo" src="' . $_SESSION["user_img"] . '" alt="user">';
-            ?>
-          </div>  
+            <?php echo '<span id="user-name">' . $_SESSION["user_name"] . '</span>'; ?>
+            <div class="dropdown-img">
+            <?php echo '<img class="user-photo" src="' . $_SESSION["user_img"] . '" alt="user">'; ?>
+              <div class="dropdown-img-content">
+                  <ul class="navbar-nav me-auto user-nav">
+                  <li class="user-nav-item">
+                      <a class="user-nav-link" href="account.php"><img class="user-nav-img" src="images/patient.png">Account</a>
+                    </li>
+                    <li class="user-nav-item">
+                      <a class="user-nav-link" href="#"><img class="user-nav-smaller" src="images/settings.png">Settings</a>
+                    </li>
+                    <li class="user-nav-item">
+                      <a class="user-nav-link" href="logout.php"><img class="user-nav-img" src="images/logout.png">Logout</a>
+                    </li>
+                  </ul>
+              </div>
+            </div>
+          </div>   
         </div>
         <div id="sm-h1"><span></span></div>
     </header>
       <main>
-        <nav id="main-nav">
+      <nav id="main-nav">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link" href="./homePage.php">Home Page</a>
+              <a class="nav-link" href="homePage.php">Home Page</a>
             </li>
             <?php 
             if($_SESSION["user_type"] == "carer"){
@@ -86,9 +102,6 @@
                 echo '</li>';
             }
             ?>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Settings</a>
-            </li>
           </ul>
         </nav>
         <div id="content">

@@ -41,8 +41,8 @@ main{
 a.nav-link {
     font-weight: 500;
     color: #333333;
-    font-size: 24px;
-    line-height: 50px;
+    font-size: 27px;
+    line-height: 55px;
 }
 a.active {
     color: #ffffff;
@@ -117,7 +117,7 @@ main {
     width: 100px;
     background-color: #777777;
     border-radius: 20px;
-    font-size: 20px;
+    font-size: 17px;
 }
 .list-group{
     margin-bottom: 10px;
@@ -185,6 +185,10 @@ div.search-bar{
     align-items: center;
     margin-bottom: 13px;
     border-radius: 20px;
+}
+.list-group-item:hover{
+    background-color: #7777776c;
+    border-color: none;
 }
 .list-group-item:last-child {
     border-bottom-right-radius: 20px;
@@ -366,6 +370,59 @@ form {
     width: 40px;
     height: 40px;
     margin-top: 10px;
+}
+.user-nav-img{
+    width: 35px;
+    height: 35px;
+    margin-right: 5px;
+}
+.user-nav-smaller{
+    width: 33px;
+    height: 33px;
+    margin-right: 7px;
+}
+.user-nav-link{
+    color: #eeeeee;
+    font-size: 20px;
+    line-height: 20px;
+}
+.user-nav-link:visited{
+    color: #eeeeee;
+}
+.user-nav-item{
+    margin: 10px;
+}
+.user-nav-item:hover{
+    opacity: 50%;
+}
+
+.dropdown-img {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-img-content {
+  display: none;
+  position: absolute;
+  right: 10px;
+  border-radius: 10px;
+  background-color: #777777;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-img:hover .dropdown-img-content {
+  display: block;
+}
+
+.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+.user-nav{
+    margin: 20px;
 }
 
 
