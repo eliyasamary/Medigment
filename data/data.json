@@ -1,0 +1,22 @@
+{
+  "sorts": [
+    { "id": 1, "name": "A-Z" },
+    { "id": 2, "name": "Z-A" },
+    { "id": 3, "name": "Last Added" }
+  ],
+  "options": [
+    {
+      "gender": [
+        { "Name": "Male" },
+        { "Name": "Female" },
+        { "Name": "prefer not to answer" }
+      ],
+      "hmo": [
+        { "Name": "Maccabi" },
+        { "Name": "Clalit" },
+        { "Name": "Meuhedet" },
+        { "Name": "Leumit" }
+      ]
+    }
+  ]
+}
