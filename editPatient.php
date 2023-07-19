@@ -167,7 +167,6 @@ if (!empty($_GET["patient_id"])) {
                                     <div class="col-6">ID Number
                                         <input type="tel" class="form-control" name="idNum" id="inputID4" value="<?php echo $idNum; ?>">
                                     </div>
-                                    <!-- add selected -->
                                     <div class="col-6">Gender
                                         <select class="form-select" name="gender">
                                             <option <?php if(empty($gender)) echo "selected"; ?> >select</option>
@@ -181,7 +180,6 @@ if (!empty($_GET["patient_id"])) {
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <!-- add selected -->
                                     <div class="col-6">HMO
                                         <select class="form-select" name="hmo">
                                             <option <?php if(empty($hmo)) echo "selected"; ?> >select</option>
@@ -201,6 +199,8 @@ if (!empty($_GET["patient_id"])) {
                                     </div>
                                 </div>
                             </div>
+                            <button type="submit" class="btn btn-secondary">Submit</button>
+                            <a href="<?php if(!empty($_GET["patient_id"])) {echo "./object.php?patient_id=" . $_GET["patient_id"];} else { echo "./list.php";} ?>"><button type="button" class="btn btn-outline-secondary">Cancel</button></a>
                         </div>
                     </div>
                 </div>
