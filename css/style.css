@@ -81,10 +81,20 @@ header{
     display: block;
     background-image: url(../images/medigment__logo.png);
     position: relative;
+    background-repeat: no-repeat;
     width: 233px;
     height: 84.14px;
     left: 20px;
 }
+#landing-logo{
+    display: block;
+    background-image: url(../images/landing_logo.png);
+    position: relative;
+    background-repeat: no-repeat;
+    width: 600px;
+    height: 600px;
+}
+
 #sm-h1{
     background-color: #777777;
     height: 38px;
@@ -267,7 +277,6 @@ hr{
     padding-right: 3%;
 }
 form {
-    margin-left: 20px;
     font-size: 20px;
     font-weight: 500;
 }
@@ -395,12 +404,10 @@ form {
 .user-nav-item:hover{
     opacity: 50%;
 }
-
 .dropdown-img {
   position: relative;
   display: inline-block;
 }
-
 .dropdown-img-content {
   display: none;
   position: absolute;
@@ -411,20 +418,76 @@ form {
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
-
 .dropdown-img:hover .dropdown-img-content {
   display: block;
 }
-
 .desc {
   padding: 15px;
   text-align: center;
 }
-
 .user-nav{
     margin: 20px;
 }
-
+#landing-content{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#login-box{
+    margin-top: 20px;
+    min-width: 350px;
+    border-radius: 15px;
+    background-color: #EEEEEE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#login{
+    min-width: 300px;
+    margin: 20px;
+}
+.landing-btn{
+    min-width: 100px;
+    height: 40px;
+}
+#register-btn{
+    position: relative;
+    left: 200px;
+    bottom: 40px;
+    background-color: #777777;
+}
+.flex-row{
+    display: flex;
+    gap:20px;
+    width: 650px;
+}
+#register-form{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    width: 650px;
+}
+.form-column{
+    width: 100%;
+}
+a.link-style1{
+    color: rgb(0, 0, 150);
+}
+a.link-style1:hover{
+    color: rgb(255, 255, 255);
+}
+a.link-style1:visited{
+    color: rgb(0, 0, 150);
+}
+.centered-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 80px;
+    width: 100%;
+}
 
 @media only screen and (min-width: 1075px ) {
     #top-nav{
@@ -537,4 +600,12 @@ form {
         display: block;
         width: 90%;
     }
+    #landing-img{
+        display: none;
+    }
+    /* #landing-content{
+        width: 100%;
+        display: flex;
+        flex-direction: column-reverse;
+    } */
 }

@@ -1,4 +1,6 @@
 <?php
+    include "db.php";
+
     session_start();
 ?>
 <!DOCTYPE html>
@@ -15,7 +17,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
-        <title>Home Page</title>
+        <title>Account</title>
     </head>
     <body id="home-page">
       <header class="sticky-top">
@@ -36,7 +38,7 @@
                 </div> 
               <ul class="navbar-nav flex-column me-auto">
                 <li class="nav-item">
-                  <a class="nav-link top-nav-link active" href="#">Home Page</a>
+                  <a class="nav-link top-nav-link" href="homePage.php">Home Page</a>
                 </li>
                 <?php 
                 if($_SESSION["user_type"] == "carer"){
@@ -88,7 +90,7 @@
         <nav id="main-nav">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Home Page</a>
+              <a class="nav-link" href="homePage.php">Home Page</a>
             </li>
             <?php 
             if($_SESSION["user_type"] == "carer"){
@@ -105,9 +107,62 @@
           </ul>
         </nav>
         <div id="content">
-            <form>
-                
-            </form>
+          <form action="saveAccount.php">
+                <div class="flex-row">
+                  <div class="form-column">
+                    <div class="mb-3">
+                        <label class="form-label">First Name</label>
+                        <input type="text" class="form-control" name="userFname" value="<?php echo $_SESSION["user_name"]; ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" class="form-control" name="userLname" value="<?php echo $_SESSION["user_Lname"]; ?>" id="userLname1">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">ID Number</label>
+                        <input type="number" class="form-control" name="userIdNum" value="<?php echo $_SESSION["user_idNum"]; ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="userEmail1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" name="userEmail" value="<?php echo $_SESSION["user_email"]; ?>" placeholder="Enter your Email">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" name="userPass" value="<?php echo $_SESSION["user_pass"]; ?>" placeholder="Enter Password">
+                    </div>
+                  </div>
+                  <div class="form-column">
+                    <div class="mb-3">
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" name="phoneNum" value="<?php echo $_SESSION["user_phone"]; ?>" placeholder="Enter Phone Number">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Gender</label>
+                        <select name="userGender" data-selected="<?php echo $_SESSION["user_gender"]; ?>" class="form-select">
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                          <option value="transgender">transgender</option>
+                          <option value="Non-binary">Non-binary</option>
+                          <option value="other">Prefer not to respond</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">HMO</label>
+                        <select name="userHMO" data-selected="<?php echo $_SESSION["user_hmo"]; ?>" class="form-select">
+                          <option value="Maccabi">Maccabi</option>
+                          <option value="Meuhedet">Meuhedet</option>
+                          <option value="Leumit">Leumit</option>
+                          <option value="Clalit">Clalit</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">User Type</label>
+                        <span class="form-control" disabled><?php echo $_SESSION["user_type"]; ?></span>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary landing-btn">Save</button>
+          </form>
         </div>
       </main>
     </body>
