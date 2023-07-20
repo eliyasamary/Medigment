@@ -41,7 +41,7 @@
       <main>
         <div class="centered-container">
             <h1>User Added Successfully !</h1>
-            <h2>To go back to login <a class="link-style1" href="login.php">click here!</a></h2>
+            <h2>To go back to login <a class="link-style1" href="index.php">click here!</a></h2>
         </div>
       </main>
     </body>
