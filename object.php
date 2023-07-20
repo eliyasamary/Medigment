@@ -159,7 +159,7 @@ if ($_SESSION["user_type"] == "carer") {
             echo
             '<div class="paitent-options patient-info-options">
               <div class="icon-with-text"><a href="./editPatient.php?patient_id=' .  $_GET["patient_id"] . '"><img src="./images/edit.png" alt="edit" class="sm-icon"></a><span>Edit</span></div>
-              <div class="icon-with-text"><a href="./savePatient.php?del=1&patient=' .  $_GET["patient_id"] . '"><img src="./images/delete.png" alt="delete" class="sm-icon"></a><span>Delete</span></div>
+              <div class="icon-with-text"><a href="./savePatient.php?del=1&patient_id=' .  $_GET["patient_id"] . '"><img src="./images/delete.png" alt="delete" class="sm-icon"></a><span>Delete</span></div>
             </div>';
             else if ((!empty($_GET["med_id"]) && (!empty($_GET["user_id"])))) {
               echo

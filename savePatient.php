@@ -131,13 +131,13 @@ $result = mysqli_query($connection, $query);
                 <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                     <ol class="breadcrumb BC-style">
                         <li class="breadcrumb-item breadcrumb-add"><a href="./list.php">Patients</a></li>
-                        <li class="breadcrumb-item breadcrumb-add"><a href="#"> <?php if (!empty($_GET["patient_id"])) {
+                        <li class="breadcrumb-item breadcrumb-add"><a href="#"> <?php if(!empty($_GET["del"])) {echo "Delete Patient"; } else if (!empty($_GET["patient_id"])) {
                                                                                     echo $_GET["firstName"] . " " . $_GET["lastName"];
                                                                                 } else echo "Add Patient" ?> </a></li>
                     </ol>
                 </nav>
                 <div class="options-h1-container">
-                    <h1 class="title-h1"> <?php if (!empty($_GET["patient_id"])) {
+                    <h1 class="title-h1"> <?php  if(!empty($_GET["del"])) {} else if (!empty($_GET["patient_id"])) {
                                                 echo $_GET["firstName"] . " " . $_GET["lastName"];
                                             } else echo "Add Patient" ?> </h1>
                 </div>
@@ -145,7 +145,8 @@ $result = mysqli_query($connection, $query);
             <div class="patient-info-container">
                 <div class="card">
                     <div class="card-body">
-                        <span class="title"><?php if (!empty($_GET["patient_id"])) echo "Patient's Medications";
+                        <span class="title"><?php if(!empty($_GET["del"])) echo "Patient deleted successfully!";
+                                            else if (!empty($_GET["patient_id"])) echo "Patient's Medications";
                                             else if (!empty($_GET["searchPatient"])) echo "Search for Patient";
                                             else if (!empty($_GET["user_id"])) echo "Results";
                                             else if (!empty($_GET["med_id"])) echo "Medication Details";
@@ -154,10 +155,14 @@ $result = mysqli_query($connection, $query);
                         <hr>
                         <div class="grid text-start">
                             <?php
-                            if (!empty($_GET["patient_id"])) {
+                            if (!empty($_GET["del"])) {
+                                echo "<div>Now let's go back to your Patients list</div>";
+                                echo '<a href="./list.php"><button type="button" class="btn btn-outline-secondary">Go back</button></a></form>';
+
+                            } else if (!empty($_GET["patient_id"])) {
                                 if ($result) {
                                     echo "<div>Request sent successfully</div>";
-                                    echo '<a href="./list.php"><button type="button" class="btn btn-outline-secondary">Go back</button></a></form>';;
+                                    echo '<a href="./list.php"><button type="button" class="btn btn-outline-secondary">Go back</button></a></form>';
                                 }
                             }
                             ?>
