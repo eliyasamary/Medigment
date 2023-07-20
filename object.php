@@ -252,11 +252,24 @@ if ($_SESSION["user_type"] == "carer") {
               else if (!empty($_GET["patient_idNum"])) {
 
                 $query2 = "SELECT * FROM tbl_204_users
+                LEFT JOIN tbl_204_carer_patient ON tbl_204_users.user_id = tbl_204_carer_patient.patient_id
                 WHERE num_id = " . $_GET["patient_idNum"] . " and user_type = 'patient';";
 
                 $result2 = mysqli_query($connection, $query2);
 
                 if (!empty($row2 = mysqli_fetch_array($result2))) { // success
+                  if($row2["carer_id"] == $_SESSION["user_id"]){
+                    echo '<li class="list-group-item">
+                    <div class="object-details">
+                    <img class="obj-list-img" src="images/patient.png">
+                      <a class="dropdown-item object-name" href="#"><span>' . $row2["first_name"] . " " . $row2["last_name"]  . ' (Already yor patient!)' . '</span></a>
+                    </div>                        
+                  </li>';
+
+                  }
+
+
+                else
                   echo '<li class="list-group-item">
                       <div class="object-details">
                       <img class="obj-list-img" src="images/patient.png">
