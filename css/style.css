@@ -86,6 +86,15 @@ header{
     height: 84.14px;
     left: 20px;
 }
+#login-header-logo {
+    display: none;
+    background-image: url(../images/medigment__logo.png);
+    position: relative;
+    background-repeat: no-repeat;
+    width: 233px;
+    height: 84.14px;
+    left: 20px;
+}
 #landing-logo{
     display: block;
     background-image: url(../images/landing_logo.png);
@@ -94,7 +103,6 @@ header{
     width: 600px;
     height: 600px;
 }
-
 #sm-h1{
     background-color: #777777;
     height: 38px;
@@ -515,9 +523,6 @@ a.link-style1:visited{
     width: 90%;
 }
 
-
-
-
 @media only screen and (min-width: 1075px ) {
     #top-nav{
         display: none;
@@ -530,9 +535,6 @@ a.link-style1:visited{
     }
     #header-container{
         justify-content: space-between;
-    }
-    #list{
-        /* max-width: 852px; */
     }
     .patient-bed{
         display: none;
@@ -554,7 +556,6 @@ a.link-style1:visited{
     }
     #content{
         margin-left: 0px;
-        /* margin-top: 0px; */
         margin-bottom: 20px;
     }
     .breadcrumb{
@@ -595,7 +596,6 @@ a.link-style1:visited{
     }
     #list{
         align-items: center;
-        /* margin-left: 0px; */
     }
     .paitent-options{
         height: 30px;
@@ -641,11 +641,9 @@ a.link-style1:visited{
         justify-content: center;
         gap: 10px;
     }
-    /* #landing-content{
-        width: 100%;
-        display: flex;
-        flex-direction: column-reverse;
-    } */
+    #login-header-logo{
+        display: block;
+    }
 }
 
 @media only screen and (max-width: 750px ){

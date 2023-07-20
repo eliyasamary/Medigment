@@ -5,7 +5,7 @@
     session_start();
     if(!empty($_POST["loginEmail"])){
 
-	    $query 	= "SELECT * FROM tbl_204_users WHERE email='" . $_POST["loginEmail"] . "' and password ='" . $_POST["loginPass"] ."'";
+	    $query 	= "SELECT * FROM tbl_204_users WHERE email='" . $_POST["loginEmail"] . "' and password ='" . $_POST["loginPass"] ."';";
 
         $result = mysqli_query($connection, $query);
         $row = mysqli_fetch_array($result);
@@ -47,6 +47,9 @@
     </head>
     <body id="login-page">
       <header class="sticky-top">
+      <div id="header-container">
+          <a href="#" id="login-header-logo"></a>
+      </div>
       </header>
       <main>
         <div id="landing-content">
@@ -78,7 +81,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="userIdNum1" class="form-label">ID Number</label>
-                        <input type="number" class="form-control" name="userIdNum" id="userFname1" placeholder="Enter your Id Number">
+                        <input type="tel" class="form-control" name="userIdNum" id="userFname1" placeholder="Enter your Id Number">
                     </div>
                     <div class="mb-3">
                         <label for="userEmail1" class="form-label">Email address</label>
@@ -99,8 +102,9 @@
                         <select name="userGender" class="form-select">
                           <option value="Male">Male</option>
                           <option value="Female">Female</option>
-                          <option value="transgender">transgender</option>
                           <option value="Non-binary">Non-binary</option>
+                          <option value="transgender">transgender</option>
+                          <option value="transgender">intersex</option>
                           <option value="other">Prefer not to respond</option>
                         </select>
                     </div>
