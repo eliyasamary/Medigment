@@ -166,7 +166,7 @@ if (!empty($_GET["patient_id"])) {
                                         echo '<div class="row">
                                         <div class="col-12">' . $row2["med_name"]  .
                                             '<div class="data">
-                                            <div class="col-4">' . $row2["strengh"] . " " . $row2["units"] . '</div>
+                                            <div class="col-4">' . $row2["strength"] . " " . $row2["units"] . '</div>
                                             <div class="col-4">' . $row2["frequency"] . '</div>
                                             <div class="col-4"> ' . $row2["many_times"] . ' </div>
                                         </div>

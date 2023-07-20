@@ -25,7 +25,7 @@ if ((!empty($_GET["med_id"])) && (!empty($_GET["user_id"]))) {
     $inhalers = ($type == "inhalers") ? " selected" : "";
     $pill = ($type == "pill") ? " selected" : "";
 
-    $strengh = $row["strengh"];
+    $strength = $row["strength"];
     $units = $row["units"];
     $frequency = $row["frequency"];
     $hour = $row["hour"];
@@ -41,7 +41,7 @@ if ((!empty($_GET["med_id"])) && (!empty($_GET["user_id"]))) {
 
     $medName = $row["med_name"];
     $type = "";
-    $strengh = "";
+    $strength = "";
     $units = "";
     $frequency = "";
     $hour = "";
@@ -214,8 +214,8 @@ if ((!empty($_GET["med_id"])) && (!empty($_GET["user_id"]))) {
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-6">Strengh
-                                        <input type="tel" class="form-control" name="strengh" id="inputID4" value="<?php echo $strengh; ?>">
+                                    <div class="col-6">Strength
+                                        <input type="tel" class="form-control" name="strength" id="inputID4" value="<?php echo $strength; ?>">
                                     </div>
                                     <div class="col-6">Units
                                         <select class="form-select" name="units">
