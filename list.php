@@ -192,7 +192,7 @@ session_start();
                   echo '<li class="list-group-item">
                     <div class="object-details">
                       <img class="obj-list-img" src="images/med.png">
-                      <a class="dropdown-item object-name" href="object.php?med_id=' . $row["med_id"] ."&user_id" . $_SESSION["user_id"] . '"><span>' . $row["med_name"]  .  '</span></a>
+                      <a class="dropdown-item object-name" href="object.php?med_id=' . $row["med_id"] ."&user_id=" . $_SESSION["user_id"] . '"><span>' . $row["med_name"]  .  '</span></a>
                     </div>                        
                   </li>';
                 }
