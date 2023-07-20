@@ -163,7 +163,7 @@ if(!$result) {
                                 echo "<div>Now let's go back to your Patients list</div>";
                                 echo '<a href="./list.php"><button type="button" class="btn btn-outline-secondary">Go back</button></a></form>';
 
-                            } else if (!empty($_GET["patient_id"])) {
+                            } else if (!empty($_GET["user_id"])) {
                                 if ($result) {
                                     echo "<div>Request sent successfully</div>";
                                     echo '<a href="./list.php"><button type="button" class="btn btn-outline-secondary">Go back</button></a></form>';

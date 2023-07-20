@@ -3,7 +3,7 @@
 
     $userFname = mysqli_real_escape_string($connection, $_GET['userFname']);
     $userLname = mysqli_real_escape_string($connection, $_GET['userLname']);
-    $userIDnum = mysqli_real_escape_string($connection, $_GET['userIdNum']);
+    $userIdDnum = mysqli_real_escape_string($connection, $_GET['userIdNum']);
     $userEmail = mysqli_real_escape_string($connection, $_GET['userEmail']);
     $userPass = mysqli_real_escape_string($connection, $_GET['userPass']);
     $userPhoneNum = mysqli_real_escape_string($connection, $_GET['phoneNum']);

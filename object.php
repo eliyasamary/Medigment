@@ -5,6 +5,8 @@ include "db.php";
 
 if ($_SESSION["user_type"] == "carer") {
   if (!empty($_GET["searchPatient"])) {
+    $firstcrumb = "Patients";
+    $secondcrumb = "Add Patient";
   } else {
     if (!empty($_GET["patient_id"])) {
       $query = "SELECT * FROM tbl_204_users WHERE user_id = " . $_GET["patient_id"] . ";";
@@ -12,6 +14,7 @@ if ($_SESSION["user_type"] == "carer") {
 
     if (!empty($_GET["patient_idNum"])) {
       $query = "SELECT * FROM tbl_204_users WHERE user_id = " . $_GET["patient_idNum"] . " and user_type = 'patient';";
+      
     }
 
     $firstcrumb = "Patients";

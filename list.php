@@ -187,7 +187,8 @@ session_start();
                     echo '<li class="list-group-item">
                         <div class="object-details">
                         <img class="obj-list-img" src="images/patient.png">
-                            <a class="dropdown-item object-name" href="object.php?patient_id=' . $row["user_id"] . '"><span>' . $row["first_name"]  .  '</span></a>
+                            <a class="dropdown-item object-name" href="object.php?patient_id=' . $row["user_id"] . '"><span>' . $row["first_name"]; if ($row["active"] == false ) echo " ( pending ) "; 
+                            echo'</span></a>
                         </div>                        
                         </li>';
                     }
