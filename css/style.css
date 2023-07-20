@@ -561,9 +561,9 @@ a.link-style1:visited{
     .breadcrumb{
         display: none;
     }
-    .options-h1-container > h1{
+    /* .options-h1-container > h1{
         display: none;
-    }
+    } */
     #BC-H1 > h1{
         display: none;
     }
@@ -593,6 +593,7 @@ a.link-style1:visited{
     }
     .card{
         width: 100%;
+        background-color: #EEEEEE;
     }
     #list{
         align-items: center;
@@ -643,6 +644,9 @@ a.link-style1:visited{
     }
     #login-header-logo{
         display: block;
+    }
+    .options-h1-container{
+        flex-direction: column;
     }
 }
 
