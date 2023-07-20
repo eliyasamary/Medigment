@@ -120,8 +120,9 @@ main {
 }
 #modify-btns{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     gap: 10px;
+    width: 100%;
 }
 .btn-secondary{
     width: 100px;
@@ -131,7 +132,7 @@ main {
 }
 .list-group{
     margin-bottom: 10px;
-    width: 90%;
+    width: 100%;
 }
 #list{
     display: flex;
@@ -153,14 +154,12 @@ main {
     font-size: 40px;
 }
 .modify{
-    width: 100%;
     display: flex;
     flex-direction: row;
     margin-bottom: 20px;
     align-items: flex-end;
     margin-left: 40px;
     margin-top: 13px;
-    width: 740px;
 }
 div.search-bar{
     width: 419px;
@@ -512,6 +511,10 @@ a.link-style1:visited{
 .save-account-btn{
     margin-left: 40px;
 }
+.list-container{
+    width: 90%;
+}
+
 
 
 
@@ -529,13 +532,16 @@ a.link-style1:visited{
         justify-content: space-between;
     }
     #list{
-        max-width: 852px;
+        /* max-width: 852px; */
     }
     .patient-bed{
         display: none;
     }
     .list-group-item{
         height: 80px;
+    }
+    .list-container{
+        width: 50%;
     }
 }
 
@@ -589,7 +595,7 @@ a.link-style1:visited{
     }
     #list{
         align-items: center;
-        margin-left: 0px;
+        /* margin-left: 0px; */
     }
     .paitent-options{
         height: 30px;
@@ -629,6 +635,11 @@ a.link-style1:visited{
     }
     #landing-img{
         display: none;
+    }
+    #modify-btns{
+        display: flex;
+        justify-content: center;
+        gap: 10px;
     }
     /* #landing-content{
         width: 100%;

@@ -122,87 +122,91 @@ session_start();
         }
         ?>
       </div>
-      <div class="modify">
-        <div id="modify-btns">
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Sort
-            </button>
-            <ul class="dropdown-menu dropdown-menu-dark" id="nav-place">
-            </ul>
-          </div>
+    <div class="list-container">
+        <div class="modify">
+            <div id="modify-btns">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Sort
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark" id="nav-place">
+                </ul>
+            </div>
+            <div class="icon-with-text"><a href=""><img src="./images/add.png" alt="add" class="sm-icon"></a><span>Add</span></div>
+            </div>
         </div>
-      </div>
-      <section id="list">
-        <div class="list-group">
-          <ul class="list-group">
-            <?php
-            include "db.php";
-            $query1 = '';
-            $sortfield = '';
-            $query2 = ';';
+        <section id="list">
+            <div class="list-group">
+            <ul class="list-group">
+                <?php
+                include "db.php";
+                $query1 = '';
+                $sortfield = '';
+                $query2 = ';';
 
-            if ($_SESSION["user_type"] == "carer") {
+                if ($_SESSION["user_type"] == "carer") {
 
-              $query1 = "SELECT * FROM tbl_204_carer_patient as c 
-                  INNER JOIN tbl_204_users as u ON c.patient_id = u.user_id
-                  WHERE c.carer_id= " . $_SESSION["user_id"];
+                $query1 = "SELECT * FROM tbl_204_carer_patient as c 
+                    INNER JOIN tbl_204_users as u ON c.patient_id = u.user_id
+                    WHERE c.carer_id= " . $_SESSION["user_id"];
 
-              $sortfield = "u.first_name";
+                $sortfield = "u.first_name";
 
-              $name = 1;
-            } else if ($_SESSION["user_type"] == "patient") {
+                $name = 1;
+                } else if ($_SESSION["user_type"] == "patient") {
 
-              $query1 = "SELECT * FROM tbl_204_medicine_patient
-                  INNER JOIN tbl_204_medicine USING(med_id)
-                  WHERE user_id = " . $_SESSION["user_id"];
+                $query1 = "SELECT * FROM tbl_204_medicine_patient
+                    INNER JOIN tbl_204_medicine USING(med_id)
+                    WHERE user_id = " . $_SESSION["user_id"];
 
-              $sortfield = "med_name";
+                $sortfield = "med_name";
 
-              $name = 0;
-            }
-            if (!empty($_GET["sort"])) {
-              if ($_GET["sort"] == 1) {
-                $query2 = " ORDER BY " . $sortfield . " ASC;";
-              } else if ($_GET["sort"] == 2) {
-                $query2 = " ORDER BY " . $sortfield . " DESC;";
-              } else if ($_GET["sort"] == 3) {
-                $query2 = " ORDER BY date DESC;";
-              } else $query2 = ";";
-            } else {
-              $query2 = ";";
-            }
+                $name = 0;
+                }
+                if (!empty($_GET["sort"])) {
+                if ($_GET["sort"] == 1) {
+                    $query2 = " ORDER BY " . $sortfield . " ASC;";
+                } else if ($_GET["sort"] == 2) {
+                    $query2 = " ORDER BY " . $sortfield . " DESC;";
+                } else if ($_GET["sort"] == 3) {
+                    $query2 = " ORDER BY date DESC;";
+                } else $query2 = ";";
+                } else {
+                $query2 = ";";
+                }
 
-            $query = $query1 . $query2;
+                $query = $query1 . $query2;
 
-            $result = mysqli_query($connection, $query);
+                $result = mysqli_query($connection, $query);
 
-            if ($result->num_rows > 0) {
-              if ($name == 1) {
-                while ($row = mysqli_fetch_array($result)) {
-                  echo '<li class="list-group-item">
-                      <div class="object-details">
-                      <img class="obj-list-img" src="images/patient.png">
-                        <a class="dropdown-item object-name" href="object.php?patient_id=' . $row["user_id"] . '"><span>' . $row["first_name"]  .  '</span></a>
-                      </div>                        
+                if ($result->num_rows > 0) {
+                if ($name == 1) {
+                    while ($row = mysqli_fetch_array($result)) {
+                    echo '<li class="list-group-item">
+                        <div class="object-details">
+                        <img class="obj-list-img" src="images/patient.png">
+                            <a class="dropdown-item object-name" href="object.php?patient_id=' . $row["user_id"] . '"><span>' . $row["first_name"]  .  '</span></a>
+                        </div>                        
+                        </li>';
+                    }
+                } else {
+                    while ($row = mysqli_fetch_array($result)) {
+                    echo '<li class="list-group-item">
+                        <div class="object-details">
+                        <img class="obj-list-img" src="images/med.png">
+                        <a class="dropdown-item object-name" href="object.php?med_id=' . $row["med_id"] ."&user_id=" . $_SESSION["user_id"] . '"><span>' . $row["med_name"]  .  '</span></a>
+                        </div>                        
                     </li>';
+                    }
                 }
-              } else {
-                while ($row = mysqli_fetch_array($result)) {
-                  echo '<li class="list-group-item">
-                    <div class="object-details">
-                      <img class="obj-list-img" src="images/med.png">
-                      <a class="dropdown-item object-name" href="object.php?med_id=' . $row["med_id"] ."&user_id=" . $_SESSION["user_id"] . '"><span>' . $row["med_name"]  .  '</span></a>
-                    </div>                        
-                  </li>';
                 }
-              }
-            }
-            ?>
-          </ul>
-        </div>
-      </section>
+                ?>
+            </ul>
+            </div>
+        </section>
+    </div>
     </div>
   </main>
 </body>
 </html>
+
