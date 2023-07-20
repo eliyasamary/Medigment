@@ -456,8 +456,12 @@ form {
     left: 200px;
     bottom: 40px;
     background-color: #777777;
+    border-color: transparent;
 }
-.flex-row{
+#register-btn:hover{
+    background-color: #555454;
+}
+.flex-form-container{
     display: flex;
     gap:20px;
     width: 650px;
@@ -466,7 +470,7 @@ form {
     display: flex;
     flex-direction: column;
     gap:20px;
-    width: 650px;
+    max-width: 650px;
 }
 .form-column{
     width: 100%;
@@ -488,6 +492,28 @@ a.link-style1:visited{
     margin-top: 80px;
     width: 100%;
 }
+.text-style2{
+    font-size: 1rem;
+    font-weight: 400;
+}
+.sign-up-btn{
+    width: 100px;
+}
+.home-page-box{
+    background-color: #eeeeee;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.account-container{
+    margin-left: 40px;
+    margin-top: 20px;
+}
+.save-account-btn{
+    margin-left: 40px;
+}
+
+
 
 @media only screen and (min-width: 1075px ) {
     #top-nav{
@@ -522,7 +548,8 @@ a.link-style1:visited{
     }
     #content{
         margin-left: 0px;
-        margin-top: 0px;
+        /* margin-top: 0px; */
+        margin-bottom: 20px;
     }
     .breadcrumb{
         display: none;
@@ -608,4 +635,17 @@ a.link-style1:visited{
         display: flex;
         flex-direction: column-reverse;
     } */
+}
+
+@media only screen and (max-width: 750px ){
+    .flex-form-container{
+        flex-direction: column;
+        width: 72vw;
+    }
+    #login-box{
+        width: 85vw;
+    }
+    #login-form{
+        width: 72vw;;
+    }
 }

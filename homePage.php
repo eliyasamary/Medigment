@@ -1,5 +1,24 @@
 <?php
+    include "db.php";
+
     session_start();
+
+    $query 	= "SELECT * FROM tbl_204_carer_patient as cp 
+    INNER JOIN tbl_204_users as u ON cp.patient_id = u.user_id
+    INNER JOIN tbl_204_medicine_patient as mp ON cp.patient_id = mp.user_id
+    INNER JOIN tbl_204_medicine as m ON mp.med_id = m.med_id
+    WHERE cp.carer_id= " . $_SESSION["user_id"];
+
+    $result = mysqli_query($connection, $query);
+
+    if(!$result) {
+      die("DB query failed.");
+    }
+
+    // $row = mysqli_fetch_array($result);
+
+    // $row['user_id']
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,10 +70,13 @@
                 }
                 ?>
                 <li class="nav-item">
-                  <a class="nav-link top-nav-link" href="#">Settings</a>
+                  <a class="nav-link top-nav-link" href="account.php"><img class="user-nav-img" src="images/patient.png">Account</a>
                 </li>
-                <li>
-                  <a class="nav-link" href="logout.php"><img class="logout-btn" src="images/logout.png">Logout</a>
+                <li class="nav-item">
+                  <a class="nav-link top-nav-link" href="#"><img class="user-nav-smaller" src="images/settings.png">Settings</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link top-nav-link" href="logout.php"><img class="user-nav-img" src="images/logout.png">Logout</a>
                 </li>
               </ul>
             </div>
@@ -105,6 +127,17 @@
           </ul>
         </nav>
         <div id="content">
+            <div id="schedule" class="home-page-box">
+            <?php 
+              while($row = mysqli_fetch_assoc($result)) {
+                echo '<div>';
+                echo    '<span>' . $row["first_name"] . ' ' . $row["last_name"] . '</span>';
+                echo    '<span>' . $row["med_name"] . '</span>';
+                echo    '<span>' . $row["strengh"] . ' ' . $row["units"] . '</span>';
+              }
+            ?> 
+            </div>
+            <div id="progress" class="home-page-box"></div>
         </div>
       </main>
     </body>

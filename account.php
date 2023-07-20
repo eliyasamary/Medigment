@@ -17,11 +17,11 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
-        <title>Account</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">        <title>Account</title>
     </head>
     <body id="home-page">
       <header class="sticky-top">
-        <nav id="top-nav" class="navbar navbar-dark">
+      <nav id="top-nav" class="navbar navbar-dark">
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -38,7 +38,7 @@
                 </div> 
               <ul class="navbar-nav flex-column me-auto">
                 <li class="nav-item">
-                  <a class="nav-link top-nav-link" href="homePage.php">Home Page</a>
+                  <a class="nav-link top-nav-link" href="#">Home Page</a>
                 </li>
                 <?php 
                 if($_SESSION["user_type"] == "carer"){
@@ -53,10 +53,13 @@
                 }
                 ?>
                 <li class="nav-item">
-                  <a class="nav-link top-nav-link" href="#">Settings</a>
+                  <a class="nav-link top-nav-link active" href="account.php"><img class="user-nav-img" src="images/patient.png">Account</a>
                 </li>
-                <li>
-                  <a class="nav-link" href="logout.php"><img class="logout-btn" src="images/logout.png">Logout</a>
+                <li class="nav-item">
+                  <a class="nav-link top-nav-link" href="#"><img class="user-nav-smaller" src="images/settings.png">Settings</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link top-nav-link" href="logout.php"><img class="user-nav-img" src="images/logout.png">Logout</a>
                 </li>
               </ul>
             </div>
@@ -107,8 +110,8 @@
           </ul>
         </nav>
         <div id="content">
-          <form action="saveAccount.php">
-                <div class="flex-row">
+          <form action="saveAccount.php" id="edit-account-form">
+                <div class="flex-form-container account-container">
                   <div class="form-column">
                     <div class="mb-3">
                         <label class="form-label">First Name</label>
@@ -128,7 +131,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Password</label>
-                        <input type="password" class="form-control" name="userPass" value="<?php echo $_SESSION["user_pass"]; ?>" placeholder="Enter Password">
+                        <input type="password" class="form-control" id="passInput" name="userPass" value="<?php echo $_SESSION["user_pass"]; ?>" placeholder="Enter Password">
                     </div>
                   </div>
                   <div class="form-column">
@@ -161,7 +164,7 @@
                     </div>
                   </div>
                 </div>
-                <button type="submit" class="btn btn-primary landing-btn">Save</button>
+                <button type="submit" class="btn btn-primary landing-btn save-account-btn">Save</button>
           </form>
         </div>
       </main>

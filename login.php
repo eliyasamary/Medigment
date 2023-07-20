@@ -65,8 +65,8 @@
                   <button type="submit" class="btn btn-primary landing-btn" id="login-submit-btn">Login</button>
               </form>
               <form id="register-form" action="saveUser.php">
-                <h2>Sign-in</h2>
-                <div class="flex-row">
+                <h2>Sign-up</h2>
+                <div class="flex-form-container">
                   <div class="form-column">
                     <div class="mb-3">
                         <label for="userFname1" class="form-label">First Name</label>
@@ -117,16 +117,16 @@
                         <label class="form-label">User Type</label>
                         <div class="form-check">
                           <input class="form-check-input" type="radio" name="userType" value="patient">
-                          <label class="form-check-label">Patient</label>
+                          <label class="form-check-label text-style2">Patient</label>
                         </div>
                         <div class="form-check">
                           <input class="form-check-input" type="radio" name="userType" value="carer">
-                          <label class="form-check-label">Carer</label>
+                          <label class="form-check-label text-style2">Carer</label>
                         </div>
                     </div>
                   </div>
                 </div>
-                <button type="submit" class="btn btn-primary landing-btn" id="register-submit-btn">Sign Up</button>
+                <button type="submit" class="btn btn-primary landing-btn sign-up-btn" id="register-submit-btn">Sign Up</button>
                 <a href="login.php">Go back to login</a>
               </form>
               <button class="btn btn-primary landing-btn" id="register-btn">Register</button>
