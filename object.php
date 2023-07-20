@@ -26,9 +26,6 @@ if ($_SESSION["user_type"] == "carer") {
     $row = mysqli_fetch_assoc($result);
   }
 } else {
-
-  $firstcrumb = "Medicines";
-
   if ((!empty($_GET["med_id"])) && (!empty($_GET["user_id"]))) {
     $query = "SELECT * FROM tbl_204_users
     INNER JOIN tbl_204_medicine_patient USING(user_id)
