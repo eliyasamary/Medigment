@@ -24,23 +24,29 @@ if ($_SESSION["user_type"] == "carer") {
   $row = mysqli_fetch_assoc($result);
 
 } else {
+
+  $firstcrumb = "Medicines";
+
   if ((!empty($_GET["med_id"])) && (!empty($_GET["user_id"]))) {
     $query = "SELECT * FROM tbl_204_users
     INNER JOIN tbl_204_medicine_patient USING(user_id)
     INNER JOIN tbl_204_medicine USING(med_id)
      WHERE med_id = " . $_GET["med_id"] . " and user_id = " . $_GET["user_id"] . ";";
-  }
 
-  $firstcrumb = "Medicines";
-  $secondcrumb = "Add Medicine";
-
-  $result = mysqli_query($connection, $query);
+$result = mysqli_query($connection, $query);
   
   if(!$result) {
     die("DB query failed.");
   }
   
   $row = mysqli_fetch_assoc($result);
+  $secondcrumb = $row["med_name"];
+
+  } else {
+    $secondcrumb = "Add Medicine";
+
+  }
+  
 }
 
 ?>
