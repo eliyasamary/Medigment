@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 include "db.php";
@@ -9,7 +10,7 @@ if (!empty($_GET["update"])) {
     $firstcrumb = "Patient";
 } else if (!empty($_GET["med_id"])) {
 
-    $query = "INSERT INTO `dbShnkr23stud2`.`tbl_204_medicine_patient` (`user_id`, `med_id`, `type`, `strength`, `units`, `frequency`, `inventory`, `hour`, `for_how_long`) VALUES ('" . $_SESSION["user_id"] . "', '" . $_GET["med_id"] . "', '" . $_GET["type"] . "', '" . $_GET["strengh"] . "', '" . $_GET["units"] . "', '" . $_GET["frequency"] . "', '" . $_GET["inventory"] . "', '" . $_GET["time"] . "', '" . $_GET["for_how_long"] . "');";
+    $query = "INSERT INTO `dbShnkr23stud2`.`tbl_204_medicine_patient` (`user_id`, `med_id`, `type`, `strength`, `units`, `frequency`, `inventory`, `hour`, `for_how_long`) VALUES ('" . $_SESSION["user_id"] . "', '" . $_GET["med_id"] . "', '" . $_GET["type"] . "', '" . $_GET["strength"] . "', '" . $_GET["units"] . "', '" . $_GET["frequency"] . "', '" . $_GET["inventory"] . "', '" . $_GET["time"] . "', '" . $_GET["for_how_long"] . "');";
 }
 
 $result = mysqli_query($connection, $query);
