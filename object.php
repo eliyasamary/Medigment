@@ -16,7 +16,12 @@ if ($_SESSION["user_type"] == "carer") {
   $secondcrumb = "Add Patient";
 
   $result = mysqli_query($connection, $query);
-
+  
+  if(!$result) {
+    die("DB query failed.");
+  }
+  
+  $row = mysqli_fetch_assoc($result);
 
 } else {
   if ((!empty($_GET["med_id"])) && (!empty($_GET["user_id"]))) {
@@ -30,14 +35,14 @@ if ($_SESSION["user_type"] == "carer") {
   $secondcrumb = "Add Medicine";
 
   $result = mysqli_query($connection, $query);
-
+  
+  if(!$result) {
+    die("DB query failed.");
+  }
+  
+  $row = mysqli_fetch_assoc($result);
 }
 
-if(!$result) {
-  die("DB query failed.");
-}
-
-$row = mysqli_fetch_assoc($result);
 ?>
 <!DOCTYPE html>
 <html>
