@@ -260,8 +260,7 @@ if ((!empty($_GET["med_id"])) && (!empty($_GET["user_id"]))) {
                                     </div>
                                     <div class="col-6">
                                         <input type="hidden" class="form-control" name="update" id="inputUpdate4" value="<?php if ((!empty($_GET["med_id"])) && (!empty($_GET["user_id"]))) {
-                                                                                                                                echo 1;
-                                                                                                                            } ?>">
+                                                                                                                                echo 1;} else echo 0 ; ?>">
                                     </div>
                                     <div class="col-6">
                                         <input type="hidden" class="form-control" name="med_id" id="inputUpdate4" value="<?php echo $_GET["med_id"] ?>">
