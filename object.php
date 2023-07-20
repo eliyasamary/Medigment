@@ -213,10 +213,7 @@ if ($_SESSION["user_type"] == "carer") {
               }
               else if ((!empty($_GET["med_id"]) && (!empty($_GET["user_id"])))) {
                 echo
-                '<span class="title">Medicine Details</span>
-                      <hr>
-                      <div class="grid text-start">
-                        <div class="row">
+                '<div class="row">
                           <div class="col-6">Medicine Name
                             <div class="data">' . $row["med_name"] . '</div>
                           </div>
