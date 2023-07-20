@@ -66,7 +66,7 @@
           </div>
         </nav>
         <div id="header-container">
-          <a href="#" id="logo"></a>
+          <a href="homePage.php" id="logo"></a>
           <div class="user" id="main-nav-user">
             <?php echo '<span id="user-name">' . $_SESSION["user_name"] . '</span>'; ?>
             <div class="dropdown-img">
