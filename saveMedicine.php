@@ -162,7 +162,7 @@ $result = mysqli_query($connection, $query);
                                 echo '<a href="./list.php"><button type="button" class="btn btn-outline-secondary">Go back</button></a></form>';;
 
                             }
-                            if (!empty($_GET["update"])) {
+                            else if (!empty($_GET["update"])) {
                                 echo "<div>Medicine changed successfully</div>";
                                 echo '<a href="./list.php"><button type="button" class="btn btn-outline-secondary">Go back</button></a></form>';;
 
