@@ -80,19 +80,35 @@ if (!empty($_GET["patient_id"])) {
                         }
                         ?>
                         <li class="nav-item">
-                            <a class="nav-link top-nav-link" href="#">Settings</a>
+                            <a class="nav-link top-nav-link" href="#"><img class="logout-btn" src="images/settings.png">Settings</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="logout.php"><img class="logout-btn" src="images/logout.png">Logout</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
         <div id="header-container">
-            <a href="#" id="logo"></a>
+            <a href="homePage.php" id="logo"></a>
             <div class="user" id="main-nav-user">
-                <?php
-                echo '<span id="user-name">' . $_SESSION["user_name"] . '</span>';
-                echo '<img class="user-photo" src="' . $_SESSION["user_img"] . '" alt="user">';
-                ?>
+                <?php echo '<span id="user-name">' . $_SESSION["user_name"] . '</span>'; ?>
+                <div class="dropdown-img">
+                    <?php echo '<img class="user-photo" src="' . $_SESSION["user_img"] . '" alt="user">'; ?>
+                    <div class="dropdown-img-content">
+                        <ul class="navbar-nav me-auto user-nav">
+                            <li class="user-nav-item">
+                                <a class="user-nav-link" href="account.php"><img class="user-nav-img" src="images/patient.png">Account</a>
+                            </li>
+                            <li class="user-nav-item">
+                                <a class="user-nav-link" href="#"><img class="user-nav-smaller" src="images/settings.png">Settings</a>
+                            </li>
+                            <li class="user-nav-item">
+                                <a class="user-nav-link" href="logout.php"><img class="user-nav-img" src="images/logout.png">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="sm-h1"><span></span></div>
@@ -115,9 +131,6 @@ if (!empty($_GET["patient_id"])) {
                     echo '</li>';
                 }
                 ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Settings</a>
-                </li>
             </ul>
         </nav>
         <div id="content" class="centerd">
@@ -129,20 +142,14 @@ if (!empty($_GET["patient_id"])) {
                     </ol>
                 </nav>
                 <div class="options-h1-container">
-                    <h1 class="title-h1"> <?php if (!empty($_GET["user_id"])) {
-                                                echo $row["first_name"] . " " . $row["last_name"];
+                    <h1 class="title-h1"> <?php if (!empty($_GET["patient_id"])) {
+                                                echo $firstName . " " . $lastName;
                                             } else echo "New Patient" ?> </h1>
-                    <!-- <div class="paitent-options patient-info-options">
-                        <div class="icon-with-text"><a href="#"><img src="./images/add.png" alt="add" class="sm-icon"></a><span>Add Med</span></div>
-                        <div class="icon-with-text"><a href="#"><img src="./images/edit.png" alt="edit" class="sm-icon"></a><span>Edit</span></div>
-                        <div class="icon-with-text"><a href="#"><img src="./images/delete.png" alt="delete" class="sm-icon"></a><span>Delete</span></div>
-                    </div> -->
                 </div>
             </div>
             <form action="./savePatient.php" method="get">
                 <div class="patient-info-container">
-                    <div class="card">
-                        <!-- <div class="card-body">
+                    <!-- <div class="card-body">
                             <span class="title">Patient's Medications </span>
                             <hr>
                             <div class="grid text-start">
@@ -170,7 +177,6 @@ if (!empty($_GET["patient_id"])) {
                                 ?>
                             </div>
                         </div> -->
-                    </div>
                     <div class="card">
                         <div class="card-body">
                             <span class="title">Patient's Personal Details</span>
@@ -178,66 +184,53 @@ if (!empty($_GET["patient_id"])) {
                             <div class="grid text-start">
                                 <div class="row">
                                     <div class="col-6">First Name
-                                        <input type="text" class="form-control" name="firstName" id="inputFirstName4" value=" <?php if (!empty($_GET["patient_id"])) {
-                                                                                                                                    echo $row["first_name"];
-                                                                                                                                } ?> ">
+                                        <input type="text" class="form-control" name="firstName" id="inputFirstName4" value="<?php echo $firstName; ?>">
                                     </div>
                                     <div class="col-6">Last Name
-                                        <input type="text" class="form-control" name="lastName" id="inputLastName4" value=" <?php echo $lastName; ?> ">
+                                        <input type="text" class="form-control" name="lastName" id="inputLastName4" value="<?php echo $lastName; ?>">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-6">ID Number
-                                        <input type="tel" class="form-control" name="idNum" id="inputID4" value=" <?php echo $idNum; ?> ">
+                                        <input type="tel" class="form-control" name="idNum" id="inputID4" value="<?php echo $idNum; ?>">
                                     </div>
-                                    <!-- add selected -->
                                     <div class="col-6">Gender
                                         <select class="form-select" name="gender">
-                                            <option selected>select</option>
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
+                                            <option <?php if (empty($gender)) echo "selected"; ?>>select</option>
+                                            <option <?php if ($gender == "Male") echo "selected"; ?> value="Male">Male</option>
+                                            <option <?php if ($gender == "Female") echo "selected"; ?> value="Female">Female</option>
+                                            <option <?php if ($gender == "Non-binary") echo "selected"; ?> value="Non-binary">Non-binary</option>
+                                            <option <?php if ($gender == "Transgender") echo "selected"; ?> value="Transgender">Transgender</option>
+                                            <option <?php if ($gender == "Intersex") echo "selected"; ?> value="Intersex">Intersex</option>
+                                            <option <?php if ($gender == "Perfer not to say") echo "selected"; ?> value="Perfer not to say">Perfer not to say</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <!-- add selected -->
                                     <div class="col-6">HMO
                                         <select class="form-select" name="hmo">
-                                            <option selected>select</option>
-                                            <option value="Maccabi">Maccabi</option>
-                                            <option value="Clalit">Clalit</option>
-                                            <option value="Meuhedet">Meuhedet</option>
-                                            <option value="Leumit">Leumit</option>
+                                            <option>select</option>
+                                            <option <?php if ($hmo = "Maccabi") echo " selected"; ?> value="Maccabi">Maccabi</option>
+                                            <option <?php if ($hmo = "Clalit") echo " selected"; ?> value="Clalit">Clalit</option>
+                                            <option <?php if ($hmo = "Meuhedet") echo " selected"; ?> value="Meuhedet">Meuhedet</option>
+                                            <option <?php if ($hmo = "Leumit") echo " selected"; ?> value="Leumit">Leumit</option>
                                         </select>
                                     </div>
                                     <div class="col-6">Phone Number
-                                        <input type="tel" class="form-control" name="phoneNumber" id="inputPhoneNumber4" value=" <?php echo $phoneNum; ?> ">
+                                        <input type="tel" class="form-control" name="phoneNumber" id="inputPhoneNumber4" value="<?php echo $phoneNum; ?>">
                                     </div>
                                     <div class="col-6">
                                         <input type="hidden" class="form-control" name="patient_id" id="inputuserId4" value="<?php echo $userId; ?>">
                                     </div>
                                 </div>
                             </div>
+                            <button type="submit" class="btn btn-secondary">Submit</button>
+                            <a href="<?php if (!empty($_GET["user_id"])) {
+                                            echo "./object.php?med_id=" . $_GET["med_id"] . "&user_id=" . $_GET["user_id"];
+                                        } else {
+                                            echo "./list.php";
+                                        } ?>"><button type="button" class="btn btn-outline-secondary">Cancel</button></a>
                         </div>
-                        <!-- <div class="card-body">
-                            <span class="title">Patient's Location</span>
-                            <hr>
-                            <div class="grid text-start">
-                                <div class="row">
-                                    <div class="col-12">Department
-                                        <div class="data">Rehabilitation</div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">Room Number
-                                        <div class="data">1</div>
-                                    </div>
-                                    <div class="col-6">Bed Number
-                                        <div class="data">3</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </form>

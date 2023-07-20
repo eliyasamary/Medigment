@@ -7,7 +7,7 @@ if (!empty($_GET["patient_id"])) {
     $query = "UPDATE `dbShnkr23stud2`.`tbl_204_users` SET first_name = '" . $_GET["firstName"] . "', last_name = '" . $_GET["lastName"] . "', num_id = '" . $_GET["idNum"] . "', phone = '" . $_GET["phoneNumber"] . "', gender = '" . $_GET["gender"] . "', hmo = '" . $_GET["hmo"] . "' WHERE (user_id ='" . $_GET["patient_id"] . "');";
 
     $firstcrumb = "Patient";
-} else if (!empty($_GET["user_id"])) {
+} else {
     $query = "INSERT INTO `dbShnkr23stud2`.`tbl_204_carer_patient` (`carer_id`, `patient_id`, `active`) VALUES ('" . $_SESSION["user_id"] . "', '" . $_GET["user_id"] . "', b'0');";
 }
 

@@ -3,7 +3,7 @@ session_start();
 
 include "db.php";
 
-if ((!empty($_GET["med_id"]))&&(!empty($_GET["user_id"]))) {
+if ((!empty($_GET["med_id"])) && (!empty($_GET["user_id"]))) {
 
     $query = "SELECT * FROM tbl_204_users
     INNER JOIN tbl_204_medicine_patient USING(user_id)
@@ -16,14 +16,14 @@ if ((!empty($_GET["med_id"]))&&(!empty($_GET["user_id"]))) {
 
     $medName = $row["med_name"];
     $type = $row["type"];
-    
-    $liquid = ($type == "liquid")?" selected":"";
-    $tablet = ($type == "tablet")?" selected":"";
-    $capsules = ($type == "capsules")?" selected":"";
-    $drops = ($type == "drops")?" selected":"";
-    $injections = ($type == "injections")?" selected":"";
-    $inhalers = ($type == "inhalers")?" selected":"";
-    $pill = ($type == "pill")?" selected":"";
+
+    $liquid = ($type == "liquid") ? " selected" : "";
+    $tablet = ($type == "tablet") ? " selected" : "";
+    $capsules = ($type == "capsules") ? " selected" : "";
+    $drops = ($type == "drops") ? " selected" : "";
+    $injections = ($type == "injections") ? " selected" : "";
+    $inhalers = ($type == "inhalers") ? " selected" : "";
+    $pill = ($type == "pill") ? " selected" : "";
 
     $strengh = $row["strengh"];
     $units = $row["units"];
@@ -31,12 +31,10 @@ if ((!empty($_GET["med_id"]))&&(!empty($_GET["user_id"]))) {
     $hour = $row["hour"];
     $for_how_long = $row["for_how_long"];
     $inventory = $row["inventory"];
-
-
 } else if (!empty($_GET["med_id"])) {
 
     $query = "SELECT * FROM tbl_204_medicine WHERE med_id = " . $_GET["med_id"] . ";";
-    
+
     $result = mysqli_query($connection, $query);
 
     $row = mysqli_fetch_assoc($result);
@@ -49,7 +47,6 @@ if ((!empty($_GET["med_id"]))&&(!empty($_GET["user_id"]))) {
     $hour = "";
     $for_how_long = "";
     $inventory = "";
-
 }
 
 ?>
@@ -189,15 +186,29 @@ if ((!empty($_GET["med_id"]))&&(!empty($_GET["user_id"]))) {
                                     <div class="col-6">Type
                                         <!-- load data from row - types -->
                                         <select class="form-select" name="type">
-                                                <option>Select</option> 
+                                            <option>Select</option>
 
-                                                <?php if($row["liquid"]){ echo "<option" . $liquid . " value='liquid'>Liquid</option>";} ?>
-                                                <?php if($row["tablet"]){ echo "<option" . $tablet . " value='tablet'>Tablet</option>";} ?>
-                                                <?php if($row["capsules"]){ echo "<option" . $capsules . " value='capsules'>Capsules</option>";} ?>
-                                                <?php if($row["drops"]){ echo "<option" . $drops . " value='drops'>Drops</option>";} ?>
-                                                <?php if($row["injections"]){ echo "<option" . $injections . " value='Injections'>injections</option>";} ?>
-                                                <?php if($row["inhalers"]){ echo "<option" . $inhalers . " value='Inhalers'>inhalers</option>";} ?>
-                                                <?php if($row["pill"]){ echo "<option" . $pill . " value='pill'>Pill</option>";} ?>
+                                            <?php if ($row["liquid"]) {
+                                                echo "<option" . $liquid . " value='liquid'>Liquid</option>";
+                                            } ?>
+                                            <?php if ($row["tablet"]) {
+                                                echo "<option" . $tablet . " value='tablet'>Tablet</option>";
+                                            } ?>
+                                            <?php if ($row["capsules"]) {
+                                                echo "<option" . $capsules . " value='capsules'>Capsules</option>";
+                                            } ?>
+                                            <?php if ($row["drops"]) {
+                                                echo "<option" . $drops . " value='drops'>Drops</option>";
+                                            } ?>
+                                            <?php if ($row["injections"]) {
+                                                echo "<option" . $injections . " value='Injections'>injections</option>";
+                                            } ?>
+                                            <?php if ($row["inhalers"]) {
+                                                echo "<option" . $inhalers . " value='Inhalers'>inhalers</option>";
+                                            } ?>
+                                            <?php if ($row["pill"]) {
+                                                echo "<option" . $pill . " value='pill'>Pill</option>";
+                                            } ?>
 
                                         </select>
                                     </div>
@@ -248,7 +259,9 @@ if ((!empty($_GET["med_id"]))&&(!empty($_GET["user_id"]))) {
                                         <input type="tel" class="form-control" name="inventory" id="inputTime4" value="<?php echo $inventory; ?>">
                                     </div>
                                     <div class="col-6">
-                                        <input type="hidden" class="form-control" name="update" id="inputUpdate4" value="<?php if ((!empty($_GET["med_id"]))&&(!empty($_GET["user_id"]))) {echo 1;} ?>">
+                                        <input type="hidden" class="form-control" name="update" id="inputUpdate4" value="<?php if ((!empty($_GET["med_id"])) && (!empty($_GET["user_id"]))) {
+                                                                                                                                echo 1;
+                                                                                                                            } ?>">
                                     </div>
                                     <div class="col-6">
                                         <input type="hidden" class="form-control" name="med_id" id="inputUpdate4" value="<?php echo $_GET["med_id"] ?>">
