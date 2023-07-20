@@ -4,25 +4,27 @@ session_start();
 include "db.php";
 
 if ($_SESSION["user_type"] == "carer") {
-  if (!empty($_GET["patient_id"])) {
-    $query = "SELECT * FROM tbl_204_users WHERE user_id = " . $_GET["patient_id"] . ";";
+  if (!empty($_GET["searchPatient"])) {
+  } else {
+    if (!empty($_GET["patient_id"])) {
+      $query = "SELECT * FROM tbl_204_users WHERE user_id = " . $_GET["patient_id"] . ";";
+    }
+
+    if (!empty($_GET["patient_idNum"])) {
+      $query = "SELECT * FROM tbl_204_users WHERE user_id = " . $_GET["patient_idNum"] . " and user_type = 'patient';";
+    }
+
+    $firstcrumb = "Patients";
+    $secondcrumb = "Add Patient";
+
+    $result = mysqli_query($connection, $query);
+
+    if (!$result) {
+      die("DB query failed.");
+    }
+
+    $row = mysqli_fetch_assoc($result);
   }
-
-  if (!empty($_GET["patient_idNum"])) {
-    $query = "SELECT * FROM tbl_204_users WHERE user_id = " . $_GET["patient_idNum"] . " and user_type = 'patient';";
-  }
-
-  $firstcrumb = "Patients";
-  $secondcrumb = "Add Patient";
-
-  $result = mysqli_query($connection, $query);
-  
-  if(!$result) {
-    die("DB query failed.");
-  }
-  
-  $row = mysqli_fetch_assoc($result);
-
 } else {
 
   $firstcrumb = "Medicines";
@@ -33,25 +35,23 @@ if ($_SESSION["user_type"] == "carer") {
     INNER JOIN tbl_204_medicine USING(med_id)
      WHERE med_id = " . $_GET["med_id"] . " and user_id = " . $_GET["user_id"] . ";";
 
-$result = mysqli_query($connection, $query);
-  
-  if(!$result) {
-    die("DB query failed.");
-  }
-  
-  $row = mysqli_fetch_assoc($result);
-  $secondcrumb = $row["med_name"];
+    $result = mysqli_query($connection, $query);
 
+    if (!$result) {
+      die("DB query failed.");
+    }
+
+    $row = mysqli_fetch_assoc($result);
+    $secondcrumb = $row["med_name"];
   } else {
     $secondcrumb = "Add Medicine";
-
   }
-  
 }
 
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -66,6 +66,7 @@ $result = mysqli_query($connection, $query);
   <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
   <title>Medigment</title>
 </head>
+
 <body id="home-page">
   <header class="sticky-top">
     <nav id="top-nav" class="navbar navbar-dark">
@@ -173,13 +174,13 @@ $result = mysqli_query($connection, $query);
               <div class="icon-with-text"><a href="./editPatient.php?patient_id=' .  $_GET["patient_id"] . '"><img src="./images/edit.png" alt="edit" class="sm-icon"></a><span>Edit</span></div>
               <div class="icon-with-text"><a href="./savePatient.php?del=1&patient_id=' .  $_GET["patient_id"] . '"><img src="./images/delete.png" alt="delete" class="sm-icon"></a><span>Delete</span></div>
             </div>';
-            else if ((!empty($_GET["med_id"]) && (!empty($_GET["user_id"])))) {
-              echo
+          else if ((!empty($_GET["med_id"]) && (!empty($_GET["user_id"])))) {
+            echo
             '<div class="paitent-options patient-info-options">
               <div class="icon-with-text"><a href="./editMedicine.php?med_id=' .  $_GET["med_id"] . '&user_id=' . $_SESSION["user_id"] . '"><img src="./images/edit.png" alt="edit" class="sm-icon"></a><span>Edit</span></div>
               <div class="icon-with-text"><a href="./saveMedicine.php?del=1&med_id=' .  $_GET["med_id"] . '"><img src="./images/delete.png" alt="delete" class="sm-icon"></a><span>Delete</span></div>
             </div>';
-            }
+          }
           ?>
         </div>
       </div>
@@ -222,8 +223,7 @@ $result = mysqli_query($connection, $query);
                       </div>
                       <button type="submit" class="btn btn-secondary">Search</button>
                             <a href="./list.php"><button type="button" class="btn btn-outline-secondary">Cancel</button></a></form>';
-              }
-              else if ((!empty($_GET["med_id"]) && (!empty($_GET["user_id"])))) {
+              } else if ((!empty($_GET["med_id"]) && (!empty($_GET["user_id"])))) {
                 echo
                 '<div class="row">
                           <div class="col-6">Medicine Name
@@ -260,8 +260,7 @@ $result = mysqli_query($connection, $query);
                       </div>
                     </div>
                   </div>';
-              }
-              else if (!empty($_GET["patient_idNum"])) {
+              } else if (!empty($_GET["patient_idNum"])) {
 
                 $query2 = "SELECT * FROM tbl_204_users
                 LEFT JOIN tbl_204_carer_patient ON tbl_204_users.user_id = tbl_204_carer_patient.patient_id
@@ -270,16 +269,15 @@ $result = mysqli_query($connection, $query);
                 $result2 = mysqli_query($connection, $query2);
 
                 if (!empty($row2 = mysqli_fetch_array($result2))) { // success
-                  if($row2["carer_id"] == $_SESSION["user_id"]){
+                  if ($row2["carer_id"] == $_SESSION["user_id"]) {
                     echo '<li class="list-group-item">
                     <div class="object-details">
                     <img class="obj-list-img" src="images/patient.png">
                       <a class="dropdown-item object-name" href="#"><span>' . $row2["first_name"] . " " . $row2["last_name"]  . ' (Already yor patient!)' . '</span></a>
                     </div>                        
                     </li>';
-                  }
-                else
-                  echo '<li class="list-group-item">
+                  } else
+                    echo '<li class="list-group-item">
                       <div class="object-details">
                       <img class="obj-list-img" src="images/patient.png">
                         <a class="dropdown-item object-name" href="./savePatient.php?user_id=' . $row2["user_id"] . '"><span>' . $row2["first_name"] . " " . $row2["last_name"]  . ' (Click to send request)' . '</span></a>
@@ -300,10 +298,10 @@ $result = mysqli_query($connection, $query);
                 <select class="form-select" name="med_id" aria-label="Default select example">
                 <option selected>Open this select menu</option>';
 
-                while ($row2 = mysqli_fetch_assoc($result2)){
-                  echo'<option value="'. $row2["med_id"] .'">'. $row2["med_name"] .'</option>'; 
+                while ($row2 = mysqli_fetch_assoc($result2)) {
+                  echo '<option value="' . $row2["med_id"] . '">' . $row2["med_name"] . '</option>';
                 };
-                echo'</select>
+                echo '</select>
               <button type="submit" class="btn btn-secondary">Submit</button>
               </form>';
               }
@@ -338,10 +336,11 @@ $result = mysqli_query($connection, $query);
                 </div>
               </div>
             </div>';
-        } 
+        }
         ?>
       </div>
     </div>
   </main>
 </body>
+
 </html>
