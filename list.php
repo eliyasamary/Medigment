@@ -132,7 +132,11 @@ session_start();
                 <ul class="dropdown-menu dropdown-menu-dark" id="nav-place">
                 </ul>
             </div>
-            <div class="icon-with-text"><a href=""><img src="./images/add.png" alt="add" class="sm-icon"></a><span>Add</span></div>
+            <?php if ($_SESSION["user_type"] == "carer") {
+              echo '<div class="icon-with-text"><a href="object.php?searchPatient"><img src="./images/add.png" alt="add" class="sm-icon"></a><span>Add</span></div>';
+            } else
+             echo '<div class="icon-with-text"><a href="object.php"><img src="./images/add.png" alt="add" class="sm-icon"></a><span>Add</span></div>';
+            ?>           
             </div>
         </div>
         <section id="list">
