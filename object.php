@@ -14,6 +14,10 @@ if ($_SESSION["user_type"] == "carer") {
 
   $firstcrumb = "Patients";
   $secondcrumb = "Add Patient";
+
+  $result = mysqli_query($connection, $query);
+
+
 } else {
   if ((!empty($_GET["med_id"])) && (!empty($_GET["user_id"]))) {
     $query = "SELECT * FROM tbl_204_users
@@ -24,9 +28,10 @@ if ($_SESSION["user_type"] == "carer") {
 
   $firstcrumb = "Medicines";
   $secondcrumb = "Add Medicine";
-}
 
-$result = mysqli_query($connection, $query);
+  $result = mysqli_query($connection, $query);
+
+}
 
 if(!$result) {
   die("DB query failed.");
