@@ -21,11 +21,13 @@ if (!empty($_GET["del"])) {
 }
 
 $result = mysqli_query($connection, $query);
+if(!$result) {
+    die("DB query failed.");
+}
 
 ?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,51 +40,53 @@ $result = mysqli_query($connection, $query);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
-    <title>Home Page</title>
+    <title>Add Medicine</title>
 </head>
-
 <body id="home-page">
     <header class="sticky-top">
         <nav id="top-nav" class="navbar navbar-dark">
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="offcanvas offcanvas-end text-bg-dark bg-dark" tabindex="-1" id="offcanvasDarkNavbar">
-                <div class="offcanvas-header">
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <div class="user" id="hamburger-nav-user">
-                        <?php
-                        echo '<img class="user-photo" src="' . $_SESSION["user_img"] . '" alt="user">';
-                        echo '<span id="user-name">' . $_SESSION["user_name"] . '</span>';
-                        ?>
-                    </div>
-                    <ul class="navbar-nav flex-column me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link top-nav-link" href="./homePage.php">Home Page</a>
-                        </li>
-                        <?php
-                        if ($_SESSION["user_type"] == "carer") {
-                            echo '<li class="nav-item">';
-                            echo '<a class="nav-link top-nav-link active" href="list.php">Patients</a>';
-                            echo '</li>';
-                        }
-                        if ($_SESSION["user_type"] == "patient") {
-                            echo '<li class="nav-item">';
-                            echo '<a class="nav-link top-nav-link active" href="list.php">Medicines</a>';
-                            echo '</li>';
-                        }
-                        ?>
-                        <li class="nav-item">
-                            <a class="nav-link top-nav-link" href="#"><img class="logout-btn" src="images/settings.png">Settings</a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="logout.php"><img class="logout-btn" src="images/logout.png">Logout</a>
-                        </li>
-                    </ul>
-                </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end text-bg-dark bg-dark" tabindex="-1" id="offcanvasDarkNavbar">
+            <div class="offcanvas-header">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
+            <div class="offcanvas-body">
+                <div class="user" id="hamburger-nav-user">
+                <?php
+                echo '<img class="user-photo" src="' . $_SESSION["user_img"] . '" alt="user">';
+                echo '<span id="user-name">' . $_SESSION["user_name"] . '</span>';
+                ?>
+                </div> 
+            <ul class="navbar-nav flex-column me-auto">
+                <li class="nav-item">
+                <a class="nav-link top-nav-link" href="#">Home Page</a>
+                </li>
+                <?php 
+                if($_SESSION["user_type"] == "carer"){
+                    echo '<li class="nav-item">';
+                    echo '<a class="nav-link top-nav-link active" href="list.php">Patients</a>';
+                    echo '</li>';
+                }
+                if($_SESSION["user_type"] == "patient"){
+                    echo '<li class="nav-item">';
+                    echo '<a class="nav-link top-nav-link active" href="list.php">Medicines</a>';
+                    echo '</li>';
+                }
+                ?>
+                <li class="nav-item">
+                <a class="nav-link top-nav-link" href="account.php"><img class="user-nav-img" src="images/patient.png">Account</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link top-nav-link" href="#"><img class="user-nav-smaller" src="images/settings.png">Settings</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link top-nav-link" href="logout.php"><img class="user-nav-img" src="images/logout.png">Logout</a>
+                </li>
+            </ul>
+            </div>
+        </div>
         </nav>
         <div id="header-container">
             <a href="homePage.php" id="logo"></a>
@@ -179,5 +183,8 @@ $result = mysqli_query($connection, $query);
         </div>
     </main>
 </body>
-
 </html>
+<?php
+mysqli_free_result($result);
+mysqli_close($connection);
+?>

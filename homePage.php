@@ -14,11 +14,6 @@
     if(!$result) {
       die("DB query failed.");
     }
-
-    // $row = mysqli_fetch_array($result);
-
-    // $row['user_id']
-
 ?>
 <!DOCTYPE html>
 <html>

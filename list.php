@@ -3,7 +3,6 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +17,6 @@ session_start();
   <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
   <title>List</title>
 </head>
-
 <body id="list-page">
   <header class="sticky-top">
     <nav id="top-nav" class="navbar navbar-dark">
@@ -30,33 +28,36 @@ session_start();
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-          <div class="user" id="hamburger-nav-user">
+            <div class="user" id="hamburger-nav-user">
             <?php
             echo '<img class="user-photo" src="' . $_SESSION["user_img"] . '" alt="user">';
             echo '<span id="user-name">' . $_SESSION["user_name"] . '</span>';
             ?>
-          </div>
+            </div> 
           <ul class="navbar-nav flex-column me-auto">
             <li class="nav-item">
-              <a class="nav-link top-nav-link" href="./homePage.php">Home Page</a>
+              <a class="nav-link top-nav-link" href="#">Home Page</a>
             </li>
-            <?php
-            if ($_SESSION["user_type"] == "carer") {
-              echo '<li class="nav-item">';
-              echo '<a class="nav-link top-nav-link active" href="list.php">Patients</a>';
-              echo '</li>';
+            <?php 
+            if($_SESSION["user_type"] == "carer"){
+                echo '<li class="nav-item">';
+                echo '<a class="nav-link top-nav-link active" href="list.php">Patients</a>';
+                echo '</li>';
             }
-            if ($_SESSION["user_type"] == "patient") {
-              echo '<li class="nav-item">';
-              echo '<a class="nav-link top-nav-link active" href="list.php">Medicines</a>';
-              echo '</li>';
+            if($_SESSION["user_type"] == "patient"){
+                echo '<li class="nav-item">';
+                echo '<a class="nav-link top-nav-link active" href="list.php">Medicines</a>';
+                echo '</li>';
             }
             ?>
             <li class="nav-item">
-              <a class="nav-link top-nav-link" href="#"><img class="logout-btn" src="images/settings.png">Settings</a>
+              <a class="nav-link top-nav-link" href="account.php"><img class="user-nav-img" src="images/patient.png">Account</a>
             </li>
-            <li>
-              <a class="nav-link" href="logout.php"><img class="logout-btn" src="images/logout.png">Logout</a>
+            <li class="nav-item">
+              <a class="nav-link top-nav-link" href="#"><img class="user-nav-smaller" src="images/settings.png">Settings</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link top-nav-link" href="logout.php"><img class="user-nav-img" src="images/logout.png">Logout</a>
             </li>
           </ul>
         </div>
@@ -125,22 +126,19 @@ session_start();
     <div class="list-container">
         <div class="modify">
             <div id="modify-btns">
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Sort
-                </button>
-                <ul class="dropdown-menu dropdown-menu-dark" id="nav-place">
-                </ul>
-            </div>
-            <?php if ($_SESSION["user_type"] == "carer") {
-              echo '<div class="icon-with-text"><a href="./object.php?searchPatient=1"><img src="./images/add.png" alt="add" class="sm-icon"></a><span>Add</span></div>';
-            } else
-             echo '<div class="icon-with-text"><a href="./object.php"><img src="./images/add.png" alt="add" class="sm-icon"></a><span>Add</span></div>';
-            ?>           
+              <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Sort</button>
+                  <ul class="dropdown-menu dropdown-menu-dark" id="nav-place"></ul>
+              </div>
+              <?php if ($_SESSION["user_type"] == "carer") {
+                echo '<div class="icon-with-text"><a href="./object.php?searchPatient=1"><img src="./images/add.png" alt="add" class="sm-icon"></a><span>Add</span></div>';
+              } else
+              echo '<div class="icon-with-text"><a href="./object.php"><img src="./images/add.png" alt="add" class="sm-icon"></a><span>Add</span></div>';
+              ?>           
             </div>
         </div>
         <section id="list">
-            <div class="list-group">
+          <div class="list-group">
             <ul class="list-group">
                 <?php
                 include "db.php";
@@ -184,7 +182,7 @@ session_start();
                 $result = mysqli_query($connection, $query);
 
                 if ($result->num_rows > 0) {
-                if ($name == 1) {
+                  if ($name == 1) {
                     while ($row = mysqli_fetch_array($result)) {
                     echo '<li class="list-group-item">
                         <div class="object-details">
@@ -193,20 +191,20 @@ session_start();
                         </div>                        
                         </li>';
                     }
-                } else {
-                    while ($row = mysqli_fetch_array($result)) {
-                    echo '<li class="list-group-item">
-                        <div class="object-details">
-                        <img class="obj-list-img" src="images/med.png">
-                        <a class="dropdown-item object-name" href="object.php?med_id=' . $row["med_id"] ."&user_id=" . $_SESSION["user_id"] . '"><span>' . $row["med_name"]  .  '</span></a>
-                        </div>                        
-                    </li>';
+                  } else {
+                      while ($row = mysqli_fetch_array($result)) {
+                      echo '<li class="list-group-item">
+                          <div class="object-details">
+                          <img class="obj-list-img" src="images/med.png">
+                          <a class="dropdown-item object-name" href="object.php?med_id=' . $row["med_id"] ."&user_id=" . $_SESSION["user_id"] . '"><span>' . $row["med_name"]  .  '</span></a>
+                          </div>                        
+                      </li>';
+                      }
                     }
-                }
                 }
                 ?>
             </ul>
-            </div>
+          </div>
         </section>
     </div>
     </div>

@@ -1,6 +1,5 @@
 <?php
     include "db.php";
-
     session_start();
 ?>
 <!DOCTYPE html>
@@ -17,11 +16,12 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">        <title>Account</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">        
+        <title>Account</title>
     </head>
     <body id="home-page">
       <header class="sticky-top">
-      <nav id="top-nav" class="navbar navbar-dark">
+        <nav id="top-nav" class="navbar navbar-dark">
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
