@@ -267,55 +267,23 @@ if ($_SESSION["user_type"] == "carer") {
                   echo "<div>No Results!</div>";
                   echo '<a href="./object.php?searchPatient=1"><button type="button" class="btn btn-outline-secondary">Try Again</button></a></form>';
                 }
-              } else if (!empty($_GET["MedicationName"])) {
-
-                $query2 = "SELECT * FROM tbl_204_medicine
-                WHERE med_name LIKE '%" . $_GET["MedicationName"] . "%'";
-
-                $result = mysqli_query($connection, $query2);
-                $counter = 0;
-                while ($row2 = mysqli_fetch_assoc($result)) {
-                  $counter++;
-                  echo '<li class="list-group-item">
-                      <div class="object-details">
-                      <img class="obj-list-img" src="images/med.png">
-                        <a class="dropdown-item object-name" href="./editMedicine.php?med_id=' . $row2["med_id"] . '"><span>' . $row2["med_name"] . " ( available in:";
-                  if ($row2["liquid"]) {
-                    echo " Liquid";
-                  }
-                  if ($row2["tablet"]) {
-                    echo " tablet";
-                  }
-                  if ($row2["capsules"]) {
-                    echo " capsules";
-                  }
-                  if ($row2["drops"]) {
-                    echo " drops";
-                  }
-                  if ($row2["injections"]) {
-                    echo " injections";
-                  }
-                  if ($row2["inhalers"]) {
-                    echo " inhalers";
-                  }
-                  if ($row2["pill"]) {
-                    echo " pill";
-                  }
-                  echo  ' )</span></a>
-                      </div>                        
-                    </li>';
-                }
-                if ($counter == 0) {
-                  echo "<div>No Results!</div>";
-                  echo '<a href="./object.php"><button type="button" class="btn btn-outline-secondary">Try Again</button></a></form>';
-                }
               } else if ((!empty($_GET["med_id"])) && (!empty($_GET["user_id"]))) {
               } else { // for search med
-                echo '<form action="#" method="GET"><div class="col-6">Medication Name
-                <input type="text" class="form-control" name="MedicationName" id="inputMedicationName4" value="">
-                  </div>
-                    <button type="submit" class="btn btn-secondary">Search</button>
-                    <a href="./list.php"><button type="button" class="btn btn-outline-secondary">Cancel</button></a></form>';
+
+                $query2 = "SELECT * FROM tbl_204_medicine;";
+
+                $result2 = mysqli_query($connection, $query2);
+
+                echo '<form action="./editMedicine.php" method="get">
+                <select class="form-select" name="med_id" aria-label="Default select example">
+                <option selected>Open this select menu</option>';
+
+                while ($row2 = mysqli_fetch_assoc($result2)){
+                  echo'<option value="'. $row2["med_id"] .'">'. $row2["med_name"] .'</option>'; 
+                };
+                echo'</select>
+              <button type="submit" class="btn btn-secondary">Submit</button>
+              </form>';
               }
               ?>
             </div>
