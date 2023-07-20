@@ -133,9 +133,9 @@ session_start();
                 </ul>
             </div>
             <?php if ($_SESSION["user_type"] == "carer") {
-              echo '<div class="icon-with-text"><a href="object.php?searchPatient=1"><img src="./images/add.png" alt="add" class="sm-icon"></a><span>Add</span></div>';
+              echo '<div class="icon-with-text"><a href="./object.php?searchPatient=1"><img src="./images/add.png" alt="add" class="sm-icon"></a><span>Add</span></div>';
             } else
-             echo '<div class="icon-with-text"><a href="object.php"><img src="./images/add.png" alt="add" class="sm-icon"></a><span>Add</span></div>';
+             echo '<div class="icon-with-text"><a href="./object.php"><img src="./images/add.png" alt="add" class="sm-icon"></a><span>Add</span></div>';
             ?>           
             </div>
         </div>
