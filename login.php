@@ -73,29 +73,29 @@
                   <div class="form-column">
                     <div class="mb-3">
                         <label for="userFname1" class="form-label">First Name</label>
-                        <input type="text" class="form-control" name="userFname" id="userFname1" placeholder="Enter your First Name">
+                        <input type="text" required class="form-control" name="userFname" id="userFname1" placeholder="Enter your First Name">
                     </div>
                     <div class="mb-3">
                         <label for="userLname1" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" name="userLname" id="userLname1" placeholder="Enter your Last Name">
+                        <input type="text" required class="form-control" name="userLname" id="userLname1" placeholder="Enter your Last Name">
                     </div>
                     <div class="mb-3">
                         <label for="userIdNum1" class="form-label">ID Number</label>
-                        <input type="tel" class="form-control" name="userIdNum" id="userFname1" placeholder="Enter your Id Number">
+                        <input type="number" required class="form-control" name="userIdNum" id="userFname1" min="1" placeholder="Enter your Id Number">
                     </div>
                     <div class="mb-3">
                         <label for="userEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" name="userEmail" id="userEmail1" placeholder="Enter your Email">
+                        <input type="email" required class="form-control" name="userEmail" id="userEmail1" placeholder="Enter your Email">
                     </div>
                     <div class="mb-3">
                         <label for="userPass1" class="form-label">Password</label>
-                        <input type="password" class="form-control" name="userPass" id="userPass1" placeholder="Enter Password">
+                        <input type="password" required class="form-control" name="userPass" id="userPass1" placeholder="Enter Password">
                     </div>
                   </div>
                   <div class="form-column">
                     <div class="mb-3">
                         <label for="phoneNum" class="form-label">Phone Number</label>
-                        <input type="tel" class="form-control" name="phoneNum" id="phoneNum" placeholder="Enter Phone Number">
+                        <input type="tel" required class="form-control" name="phoneNum" id="phoneNum" placeholder="Enter Phone Number">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Gender</label>
@@ -120,11 +120,11 @@
                     <div class="mb-3">
                         <label class="form-label">User Type</label>
                         <div class="form-check">
-                          <input class="form-check-input" type="radio" name="userType" value="patient">
+                          <input class="form-check-input" type="radio" required name="userType" value="patient">
                           <label class="form-check-label text-style2">Patient</label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="radio" name="userType" value="carer">
+                          <input class="form-check-input" type="radio" required name="userType" value="carer">
                           <label class="form-check-label text-style2">Carer</label>
                         </div>
                     </div>

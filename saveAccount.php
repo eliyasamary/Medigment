@@ -21,6 +21,15 @@
       die("DB query failed.");
     }
 
+    $_SESSION["user_name"] = $userFname;
+    $_SESSION["user_Lname"] = $userLname;
+    $_SESSION["user_idNum"] = $userIDnum;
+    $_SESSION["user_email"] = $userEmail;
+    $_SESSION["user_pass"] = $userPass;
+    $_SESSION["user_phone"] = $userPhoneNum;
+    $_SESSION["user_gender"] = $userGender;
+    $_SESSION["user_hmo"] = $userHMO;
+
 ?>
 <!DOCTYPE html>
 <html>
