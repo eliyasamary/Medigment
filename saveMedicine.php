@@ -10,9 +10,7 @@ if (!empty($_GET["del"])) {
     $user_id = $_SESSION["user_id"];
     $med_id = $_GET["med_id"];
 
-    $query = "DELETE FROM `dbShnkr23stud2`.`tbl_204_medicine_patient` WHERE (user_id = '". $user_id ."') and (med_id = '". $med_id ."');";  // deletteeeee
-
-    $result = mysqli_query($connection, $query);
+    $query = "DELETE FROM `dbShnkr23stud2`.`tbl_204_medicine_patient` WHERE (user_id = '". $user_id ."') and (med_id = '". $med_id ."');"; 
 
 } else if (!empty($_GET["update"])) {
     $query = "UPDATE `dbShnkr23stud2`.`tbl_204_medicine_patient` SET `type` = '" . $_GET["type"] . "', strength = '" . $_GET["strength"] . "', units = '" . $_GET["units"] . "', frequency = '" . $_GET["frequency"] . "', inventory = '" . $_GET["inventory"] . "', hour = '" . $_GET["time"] . "', for_how_long = '" . $_GET["for_how_long"] . "' WHERE (user_id = '" . $_SESSION["user_id"] . "') and (med_id ='" . $_GET["med_id"] . "');";
