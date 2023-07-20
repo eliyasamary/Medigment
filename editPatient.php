@@ -10,6 +10,7 @@ if (!empty($_GET["patient_id"])) {
 
     $row = mysqli_fetch_assoc($result);
 
+    $userId = $row["user_id"];
     $firstName = $row["first_name"];
     $lastName = $row["last_name"];
     $idNum = $row["num_id"];
@@ -17,6 +18,7 @@ if (!empty($_GET["patient_id"])) {
     $hmo = $row["hmo"];
     $phoneNum = $row["phone"];
 } else {
+    $userId = "";
     $firstName = "";
     $lastName = "";
     $idNum = "";
@@ -137,7 +139,7 @@ if (!empty($_GET["patient_id"])) {
                     </div> -->
                 </div>
             </div>
-            <form action="http://se.shenkar.ac.il/students/2022-2023/web1/dev_204/index.php" method="get">
+            <form action="./savePatient.php" method="get">
                 <div class="patient-info-container">
                     <div class="card">
                         <!-- <div class="card-body">
@@ -211,10 +213,8 @@ if (!empty($_GET["patient_id"])) {
                                     <div class="col-6">Phone Number
                                         <input type="tel" class="form-control" name="phoneNumber" id="inputPhoneNumber4" value=" <?php echo $phoneNum; ?> ">
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">Sensitivities
-                                        <div class="data">No sensitivity</div>
+                                    <div class="col-6">
+                                        <input type="hidden" class="form-control" name="patient_id" id="inputuserId4" value="<?php echo $userId; ?>">
                                     </div>
                                 </div>
                             </div>
