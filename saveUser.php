@@ -1,6 +1,14 @@
 <?php
     include "db.php";
 
+    $query = "SELECT * FROM tbl_204_users WHERE num_id=" . $_GET['userIdNum'] . ";";
+
+    $result = mysqli_query($connection, $query);
+
+    if(!empty($row = mysqli_fetch_assoc($result))) {
+        $message = "ID in use, maybe you already sign-up ?";
+    } else {
+
     $userFname = mysqli_real_escape_string($connection, $_GET['userFname']);
     $userLname = mysqli_real_escape_string($connection, $_GET['userLname']);
     $userIdDnum = mysqli_real_escape_string($connection, $_GET['userIdNum']);
@@ -14,10 +22,13 @@
     $query = "INSERT into tbl_204_users(first_name,last_name,num_id,email,password,phone,gender,hmo,user_type) values ('" . $userFname . "','" . $userLname . "','" . $userIdDnum . "','" . $userEmail . "','" . $userPass . "','" . $userPhoneNum . "','" . $userGender . "','" . $userHMO . "','" . $userType . "')";
 
     $result = mysqli_query($connection, $query);
+
+    $message = "User Added Successfully !";
 	
     if(!$result) {
         die("DB query failed.");
     }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,7 +51,7 @@
       </header>
       <main>
         <div class="centered-container">
-            <h1>User Added Successfully !</h1>
+            <h1><?php echo $message; ?></h1>
             <h2>To go back to login <a class="link-style1" href="index.php">click here!</a></h2>
         </div>
       </main>

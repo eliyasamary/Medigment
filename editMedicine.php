@@ -166,11 +166,11 @@ if ((!empty($_GET["med_id"])) && (!empty($_GET["user_id"]))) {
             <div id="BC-H1">
                 <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                     <ol class="breadcrumb BC-style">
-                        <li class="breadcrumb-item breadcrumb-add"><a href="./list.php">Patients</a></li>
+                        <li class="breadcrumb-item breadcrumb-add"><a href="./list.php">Medicines</a></li>
                         <?php if (!empty($_GET["patient_id"])) {
                             echo '<li class="breadcrumb-item breadcrumb-add"><a href="./object.php?patient_id=' . $_GET["patient_id"] . '">' . $firstName . " " . $lastName . '</a></li>';
                         } ?>
-                        <li class="breadcrumb-item breadcrumb-add"><a href="#">Edit Patient</a></li>
+                        <li class="breadcrumb-item breadcrumb-add"><a href="#">Edit Medicine</a></li>
                     </ol>
                 </nav>
                 <div class="options-h1-container">

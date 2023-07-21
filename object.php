@@ -83,7 +83,7 @@ if ($_SESSION["user_type"] == "carer") {
                 </div> 
               <ul class="navbar-nav flex-column me-auto">
                 <li class="nav-item">
-                  <a class="nav-link top-nav-link" href="#">Home Page</a>
+                  <a class="nav-link top-nav-link" href="homePage.php">Home Page</a>
                 </li>
                 <?php 
                 if($_SESSION["user_type"] == "carer"){

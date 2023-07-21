@@ -251,7 +251,7 @@ div.search-bar{
     padding-left: 10px;
 }
 .card{
-    background-color: transparent;
+    background-color: #eeeeee;
     border: 0px;
     width: 47%;
 }
@@ -511,6 +511,7 @@ a.link-style1:visited{
     border-radius: 10px;
     font-size: 20px;
     font-weight: 500;
+    height: 100%;
 }
 .account-container{
     margin-left: 40px;
@@ -522,6 +523,50 @@ a.link-style1:visited{
 .list-container{
     width: 90%;
 }
+#dashbord-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items:flex-start;
+}
+.small-box{
+    width: 400px;
+    height: 280px;
+    margin: 20px;
+    padding: 20px;
+}
+.large-box{
+    width: 400px;
+    height: 580px;
+    margin: 20px;
+    padding: 20px;
+}
+.small-text{
+    font-size: 18px;
+    font-weight: 200;
+}
+.medium-text{
+    font-size: 20px;
+    width: 150px;
+}
+.inventory-item{
+    display: flex;
+    justify-content: space-around;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin-top: 10px;
+    align-items: center;
+}
+.med-item{
+    display: flex;
+    justify-content: space-around;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin-top: 10px;
+    align-items: center;
+    height: 50px;
+}
+
 
 @media only screen and (min-width: 1075px ) {
     #top-nav{
@@ -561,9 +606,6 @@ a.link-style1:visited{
     .breadcrumb{
         display: none;
     }
-    /* .options-h1-container > h1{
-        display: none;
-    } */
     #BC-H1 > h1{
         display: none;
     }
@@ -593,7 +635,6 @@ a.link-style1:visited{
     }
     .card{
         width: 100%;
-        background-color: #EEEEEE;
     }
     #list{
         align-items: center;
@@ -648,6 +689,22 @@ a.link-style1:visited{
     .options-h1-container{
         flex-direction: column;
     }
+    #dashbord-container{
+        flex-direction: column;
+    }
+    .small-box{
+        width: 100%;
+    }
+    .large-box{
+        width: 90%;
+        margin: 0px;
+        margin-bottom: 10px;
+        margin-left: 20px;
+    }
+    .small-boxes-container{
+        width: 90%;
+    }
+    
 }
 
 @media only screen and (max-width: 750px ){

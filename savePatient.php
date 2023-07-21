@@ -5,7 +5,13 @@ include "db.php";
 
 $firstcrumb = "Patient";
 
-if (!empty($_GET["del"])) {
+if (!empty($_GET["accept"])){
+
+    $query = "UPDATE `dbShnkr23stud2`.`tbl_204_carer_patient` SET active = true WHERE (carer_id = '". $_GET["carer_id"] ."') and (patient_id = '". $_SESSION["user_id"] ."')";
+    
+}
+
+else if (!empty($_GET["del"])) {
     $user_id = $_SESSION["user_id"];
     $patient_id = $_GET["patient_id"];
 
@@ -16,6 +22,7 @@ if (!empty($_GET["del"])) {
 
 } else {
     $query = "INSERT INTO `dbShnkr23stud2`.`tbl_204_carer_patient` (`carer_id`, `patient_id`, `active`) VALUES ('" . $_SESSION["user_id"] . "', '" . $_GET["user_id"] . "', b'0');";
+    
 }
 
 $result = mysqli_query($connection, $query);
@@ -159,11 +166,18 @@ if(!$result) {
                         <hr>
                         <div class="grid text-start">
                             <?php
-                            if (!empty($_GET["del"])) {
+                             if (!empty($_GET["accept"])) {
+                                echo "<div>Carer added successfully</div>";
+                                echo '<a href="./list.php"><button type="button" class="btn btn-outline-secondary">Go back</button></a></form>';
+                            }
+                            else if (!empty($_GET["del"])) {
                                 echo "<div>Now let's go back to your Patients list</div>";
                                 echo '<a href="./list.php"><button type="button" class="btn btn-outline-secondary">Go back</button></a></form>';
-
-                            } else if (!empty($_GET["user_id"])) {
+                            } else if (!empty($_GET["patient_id"])) {
+                                echo "<div>Patient details changed successfully</div>";
+                                echo '<a href="./list.php"><button type="button" class="btn btn-outline-secondary">Go back</button></a></form>';
+                            }
+                            else if (!empty($_GET["user_id"])) {
                                 if ($result) {
                                     echo "<div>Request sent successfully</div>";
                                     echo '<a href="./list.php"><button type="button" class="btn btn-outline-secondary">Go back</button></a></form>';

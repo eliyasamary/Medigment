@@ -3,17 +3,53 @@
 
     session_start();
 
-    $query 	= "SELECT * FROM tbl_204_carer_patient as cp 
-    INNER JOIN tbl_204_users as u ON cp.patient_id = u.user_id
-    INNER JOIN tbl_204_medicine_patient as mp ON cp.patient_id = mp.user_id
-    INNER JOIN tbl_204_medicine as m ON mp.med_id = m.med_id
-    WHERE cp.carer_id= " . $_SESSION["user_id"];
+    if ($_SESSION["user_type"] == "carer") {
+      $query1 	= "SELECT * FROM tbl_204_carer_patient as cp 
+      INNER JOIN tbl_204_users as u ON cp.patient_id = u.user_id
+      INNER JOIN tbl_204_medicine_patient as mp ON cp.patient_id = mp.user_id
+      INNER JOIN tbl_204_medicine as m ON mp.med_id = m.med_id
+      WHERE cp.carer_id= " . $_SESSION["user_id"] ;
 
-    $result = mysqli_query($connection, $query);
+      $result = mysqli_query($connection, $query1);
+      
+      $queryalert = "SELECT * FROM tbl_204_carer_patient c
+      INNER JOIN tbl_204_alerts a ON c.patient_id = a.user_id
+      INNER JOIN tbl_204_medicine m ON a.med_id = m.med_id
+      WHERE c.carer_id = '".$_SESSION["user_id"]."' 
+      ORDER BY date asc limit 8;";
 
-    if(!$result) {
-      die("DB query failed.");
+      $resultalert = mysqli_query($connection, $queryalert);
+
+      if(!$result) {
+        die("DB query failed.");
+      }
+
+      } else if ($_SESSION["user_type"] == "patient") {
+        $query2	= "SELECT * FROM tbl_204_users as u 
+        INNER JOIN tbl_204_medicine_patient as mp ON mp.user_id = u.user_id
+        INNER JOIN tbl_204_medicine as m ON mp.med_id = m.med_id
+        WHERE u.user_id=" . $_SESSION["user_id"] . ";";
+
+      $result = mysqli_query($connection, $query2);
+
+      $queryalert = "SELECT * FROM tbl_204_alerts 
+      INNER JOIN tbl_204_medicine USING(med_id)
+      WHERE user_id = '". $_SESSION["user_id"] . "' 
+      ORDER BY date asc limit 8;";
+
+      $resultalert = mysqli_query($connection, $queryalert);
+
+      $queryrequest = "SELECT * FROM tbl_204_carer_patient as p 
+      INNER JOIN tbl_204_users as u ON p.carer_id = u.user_id
+      WHERE (patient_id = '" . $_SESSION["user_id"] . "') and (active='0');";
+
+      $resultrequest = mysqli_query($connection, $queryrequest);
+
+      if(!$result) {
+        die("DB query failed.");
+      }
     }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -122,18 +158,64 @@
           </ul>
         </nav>
         <div id="content">
-            <div id="schedule" class="home-page-box">
-            <?php 
-              while($row = mysqli_fetch_assoc($result)) {
-                echo '<div>';
-                echo    '<span>' . $row["first_name"] . ' ' . $row["last_name"] . '</span>';
-                echo    '<span>' . $row["med_name"] . '</span>';
-                echo    '<span>' . $row["strengh"] . ' ' . $row["units"] . '</span>';
-              }
-            ?> 
+            <div id="dashbord-container">
+              <div class="small-boxes-container">
+                <div class="home-page-box small-box">
+                  <span class="title">Messages<span>
+                  <hr>
+                  <?php
+                    if ($row4 = mysqli_fetch_assoc($resultrequest)) {
+                      echo '<a href="./savePatient.php?accept=1&carer_id=' . $row4["carer_id"] . '"><div class="inventory-item">';
+                    echo    	'<span class="medium-text">' . $row4["first_name"] . " " . $row4["last_name"] . '</span>';
+                    echo    	'<span class="small-text">sent care requerst</span>';
+                    echo '</div></a>';
+                    }
+                  ?>
+                </div>
+                <div class="home-page-box small-box">
+                  <span class="title">Inventory<span>
+                  <hr>
+                  <?php
+                  while($row2 = mysqli_fetch_assoc($result)) {
+                    echo '<div class="inventory-item">';
+                    echo    	'<span class="medium-text">' . $row2["med_name"] . '</span>';
+                    echo    	'<span class="small-text">' . $row2["strength"] . ' ' . $row2["units"] . '</span>';
+                    echo    	'<span class="small-text">' . $row2["inventory"] . ' left</span>';
+                    echo '</div>';
+                  }
+                  ?>
+                </div>
+              </div>
+              <div class="home-page-box large-box">
+                <span class="title">Up To Next<span>
+                <hr>
+                  <?php if ($_SESSION["user_type"] == "patient") {
+
+                    while($rowalert = mysqli_fetch_assoc($resultalert)){
+                      echo '<div class="inventory-item">';
+                    echo    	'<span class="medium-text">' . $rowalert["med_name"] . '</span>';
+                    echo    	'<span class="small-text">' . $rowalert["time"]   . ' ' . $rowalert["date"] . '</span>';
+                    echo '</div>';
+                    }
+
+                  } else if ($_SESSION["user_type"] == "carer") {
+                    while($rowalert = mysqli_fetch_assoc($resultalert)){
+                      echo '<div class="inventory-item">';
+                    echo    	'<span class="medium-text">' . $rowalert["med_name"] . '</span>';
+                    echo    	'<span class="small-text">' . $rowalert["time"]   . ' ' . $rowalert["date"] . '</span>';
+                    echo    	'<span class="medium-text">' . $rowalert["first_name"]   . ' ' . $rowalert["last_name"] . '</span>';
+                    echo '</div>';
+                    }
+                  }
+                    ?>
+              </div>
             </div>
-            <div id="progress" class="home-page-box"></div>
         </div>
       </main>
     </body>
 </html>
+<?php
+mysqli_free_result($result);
+mysqli_free_result($result3);
+mysqli_close($connection);
+?>

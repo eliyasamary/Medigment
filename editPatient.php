@@ -153,30 +153,7 @@ if (!empty($_GET["patient_id"])) {
             </div>
             <form action="./savePatient.php" method="get">
                 <div class="patient-info-container">
-                    <?php
-                    if (!empty($_GET["patient_id"])) {
-                        $query2 = "SELECT * FROM tbl_204_medicine_patient
-                        INNER JOIN tbl_204_medicine USING(med_id)
-                        WHERE user_id = " . $_GET['patient_id'] . ";";
-
-                        $result2 = mysqli_query($connection, $query2);
-
-                        while ($row2 = mysqli_fetch_array($result2)) {
-                            echo '<div class="row">
-                            <div class="col-12">' . $row2["med_name"]  .
-                                '<div class="data">
-                                <div class="col-4">' . $row2["strength"] . " " . $row2["units"] . '</div>
-                                <div class="col-4">' . $row2["frequency"] . '</div>
-                                <div class="col-4"> ' . $row2["many_times"] . ' </div>
-                            </div>
-                            </div>
-                        </div>';
-                        }
-                    }
-                    ?>
-                </div>
-                        <!-- </div> -->
-                    <div class="card">
+                <div class="card">
                         <div class="card-body">
                             <span class="title">Patient's Personal Details</span>
                             <hr>
@@ -229,6 +206,35 @@ if (!empty($_GET["patient_id"])) {
                                         } else {
                                             echo "./list.php";
                                         } ?>"><button type="button" class="btn btn-outline-secondary">Cancel</button></a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <span class="title">Patient's Medicine Details</span>
+                            <hr>
+                            <div class="grid text-start">
+                            <?php
+                            if (!empty($_GET["patient_id"])) {
+                                $query2 = "SELECT * FROM tbl_204_medicine_patient
+                                INNER JOIN tbl_204_medicine USING(med_id)
+                                WHERE user_id = " . $_GET['patient_id'] . ";";
+
+                                $result2 = mysqli_query($connection, $query2);
+
+                                while ($row2 = mysqli_fetch_array($result2)) {
+                                    echo '<div class="row">
+                                            <div class="col-12">' . $row2["med_name"]  .
+                                                '<div class="data">
+                                                    <div class="col-4">' . $row2["strength"] . " " . $row2["units"] . '</div>
+                                                    <div class="col-4">' . $row2["frequency"] . '</div>
+                                                    <div class="col-4"> ' . $row2["many_times"] . ' </div>
+                                                </div>
+                                            </div>
+                                        </div>';
+                                }
+                            }
+                            ?>
+                            </div>
                         </div>
                     </div>
                 </div>

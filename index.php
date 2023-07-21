@@ -8,6 +8,10 @@
 	    $query 	= "SELECT * FROM tbl_204_users WHERE email='" . $_POST["loginEmail"] . "' and password ='" . $_POST["loginPass"] ."';";
 
         $result = mysqli_query($connection, $query);
+        if(!$result) {
+          die("DB query failed.");
+        }
+
         $row = mysqli_fetch_array($result);
 
         if(is_array($row)){

@@ -12,15 +12,89 @@ if (!empty($_GET["del"])) {
 
     $query = "DELETE FROM `dbShnkr23stud2`.`tbl_204_medicine_patient` WHERE (user_id = '". $user_id ."') and (med_id = '". $med_id ."');"; 
 
+    $query2 = "DELETE FROM `dbShnkr23stud2`.`tbl_204_alerts` WHERE (user_id = '". $user_id ."') and (med_id = '". $med_id ."');";
+
+    $result2 = mysqli_query($connection, $query2);
+
 } else if (!empty($_GET["update"])) {
+    $user_id = $_SESSION["user_id"];
+    $med_id = $_GET["med_id"];
     $query = "UPDATE `dbShnkr23stud2`.`tbl_204_medicine_patient` SET `type` = '" . $_GET["type"] . "', strength = '" . $_GET["strength"] . "', units = '" . $_GET["units"] . "', frequency = '" . $_GET["frequency"] . "', inventory = '" . $_GET["inventory"] . "', hour = '" . $_GET["time"] . "', for_how_long = '" . $_GET["for_how_long"] . "' WHERE (user_id = '" . $_SESSION["user_id"] . "') and (med_id ='" . $_GET["med_id"] . "');";
-    
+
+    $query2 = "DELETE FROM `dbShnkr23stud2`.`tbl_204_alerts` WHERE (user_id = '". $user_id ."') and (med_id = '". $med_id ."');";
+
+    $result2 = mysqli_query($connection, $query2);
+
+    if($_GET["frequency"] == "daily") {$x=1;}
+    else if($_GET["frequency"] == "weekly") {$x=7;}
+    else if($_GET["frequency"] == "twice a week") {$x=3;}
+    else if($_GET["frequency"] == "monthly") {$x=30;}
+
+    if($_GET["for_how_long"] == "week") {$y=7;}
+    else if($_GET["for_how_long"] == "2 weeks") {$y=14;}
+    else if($_GET["for_how_long"] == "month") {$y=30;}
+    else if($_GET["for_how_long"] == "3 months") {$y = 90;}
+
+    $count = $y / $x ;
+    $d = date( "Y-m-d", strtotime( "today" ) );
+
+    for($i = 0 ; $i < $count ; $i++) {
+
+        $d = date( "Y-m-d", strtotime( $d." +".$x." day" ) );
+
+
+        $query3 = "INSERT INTO `dbShnkr23stud2`.`tbl_204_alerts` (`user_id`, `med_id`, `date`, `time`, `message`, `taken`) VALUES ('".$_SESSION["user_id"]."', '".$_GET["med_id"]."', '". $d ."', '". $_GET["time"] ."', 'aaaaaa', b'0');";
+        $result3 = mysqli_query($connection, $query3);
+    }
 } else if (!empty($_GET["med_id"])) {
 
+    $query = "SELECT distinct a.med_id, m.med_name FROM 
+    (SELECT p.user_id, p.med_id, c1.med_id2, c2.med_id1
+    FROM tbl_204_medicine_patient p 
+    LEFT JOIN tbl_204_conflict_med c1 ON p.med_id = c1.med_id1 
+    LEFT JOIN tbl_204_conflict_med c2 ON p.med_id = c2.med_id2)a JOIN tbl_204_medicine m ON a.med_id = m.med_id
+    WHERE med_id1 = ". $_GET["med_id"] ." OR med_id2 = ". $_GET["med_id"] .";";
+
+    $result = mysqli_query($connection, $query);
+
+    if ($result->num_rows > 0) {
+        $message = "The are conflict with some medicines you take: ";
+        while($row = mysqli_fetch_array($result)) {
+            
+            $message = $message . " " . $row["med_name"];
+        }
+    } else {
+
     $query = "INSERT INTO `dbShnkr23stud2`.`tbl_204_medicine_patient` (`user_id`, `med_id`, `type`, `strength`, `units`, `frequency`, `inventory`, `hour`, `for_how_long`) VALUES ('" . $_SESSION["user_id"] . "', '" . $_GET["med_id"] . "', '" . $_GET["type"] . "', '" . $_GET["strength"] . "', '" . $_GET["units"] . "', '" . $_GET["frequency"] . "', '" . $_GET["inventory"] . "', '" . $_GET["time"] . "', '" . $_GET["for_how_long"] . "');";
+    
+    if($_GET["frequency"] == "daily") {$x=1;}
+    else if($_GET["frequency"] == "weekly") {$x=7;}
+    else if($_GET["frequency"] == "twice a week") {$x=3;}
+    else if($_GET["frequency"] == "monthly") {$x=30;}
+
+    if($_GET["for_how_long"] == "week") {$y=7;}
+    else if($_GET["for_how_long"] == "2 weeks") {$y=14;}
+    else if($_GET["for_how_long"] == "month") {$y=30;}
+    else if($_GET["for_how_long"] == "3 months") {$y = 90;}
+
+    $count = $y / $x ;
+    $d = date( "Y-m-d", strtotime( "today" ) );
+
+    for($i = 0 ; $i < $count ; $i++) {
+
+        $d = date( "Y-m-d", strtotime( $d." +".$x." day" ) );
+
+
+        $query2 = "INSERT INTO `dbShnkr23stud2`.`tbl_204_alerts` (`user_id`, `med_id`, `date`, `time`, `message`, `taken`) VALUES ('".$_SESSION["user_id"]."', '".$_GET["med_id"]."', '". $d ."', '". $_GET["time"] ."', 'aaaaaa', b'0');";
+        $result2 = mysqli_query($connection, $query2);
+    }
+
+    $message = "Medicine added successfully";
+    }
 }
 
 $result = mysqli_query($connection, $query);
+
 if(!$result) {
     die("DB query failed.");
 }
@@ -171,7 +245,7 @@ if(!$result) {
                             }
                             else if (!empty($_GET["med_id"])) {
                                 if ($result) {
-                                    echo "<div>Medicine added successfully</div>";
+                                    echo "<div>". $message ."</div>";
                                     echo '<a href="./list.php"><button type="button" class="btn btn-outline-secondary">Go back</button></a></form>';;
                                 }
                             }
