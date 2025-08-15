@@ -25,12 +25,12 @@ The Medigment system addresses these challenges by:
 ---
 
 ## 🧑‍⚕️ Patient Flow
-![Patient Flow](path/to/patient-flow-image.png)
+![Patient Flow](images/patient-flow.jpg)
 
 ---
 
 ## 👩‍⚕️ Carer Flow
-![Carer Flow](path/to/carer-flow-image.png)
+![Carer Flow](images/carer-flow.jpg)
 
 ---
 
