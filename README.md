@@ -35,7 +35,7 @@ The Medigment system addresses these challenges by:
 ---
 
 ## 🖥️ System Architecture
-![System Architecture](path/to/system-architecture-image.png)
+![System Architecture](images/Medigment_Arch.jpg)
 
 ---
 
